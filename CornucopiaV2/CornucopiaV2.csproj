@@ -70,6 +70,7 @@
     <Compile Include="Extenders\IntExtenders.cs" />
     <Compile Include="File\CorFile.cs" />
     <Compile Include="M\M.cs" />
+    <Compile Include="Navigation\CurveType.cs" />
     <Compile Include="Navigation\Direction.cs" />
     <Compile Include="Navigation\NavExt.cs" />
     <Compile Include="Navigation\NavUnit.cs" />

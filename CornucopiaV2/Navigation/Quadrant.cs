@@ -193,45 +193,6 @@ namespace CornucopiaV2
 			return quadrant.GetAttribute<YIncrementAttribute>().Unit;
 		}
 
-
-
-
 	}
 
-	public enum Goeters
-	{
-		[Subject("aaaaaaaaaa")]
-		A = 1,
-	}
-
-	public abstract class AStringAttribute : Attribute
-	{
-		public string Subject { get; private set; }
-		public AStringAttribute(string subject)
-		{
-			Subject = subject;
-		}
-	}
-
-	public class SubjectAttribute: AStringAttribute
-	{
-		public SubjectAttribute
-			(string subject)
-			
-			: base(subject)
-		{
-		}
-	}
-
-	public static class SubjectExtender
-	{
-		public static string Subject
-			(this Goeters ding
-			)
-		{
-			string result = null;
-			result = ding.GetAttribute<SubjectAttribute>().Subject;
-			return result;
-		}
-	}
 }

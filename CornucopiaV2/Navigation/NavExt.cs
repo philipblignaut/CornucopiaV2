@@ -99,6 +99,7 @@ namespace CornucopiaV2
 			(this List<NavUnit> navUnitList
 			, CorImage image
 			, float lineWidth
+			, CurveType curveType
 			)
 		{
 			//ConDeb.ConDebPrintDelegate += CatchLine;
@@ -162,12 +163,12 @@ namespace CornucopiaV2
 							, navUnit.YTo
 							)
 							;
-						ConDeb
-							.Print
-							("C " + navUnit.ToString()
-							+ C.sp + color.ToHTML()
-							)
-							;
+						//ConDeb
+						//	.Print
+						//	("C " + navUnit.ToString()
+						//	+ C.sp + color.ToHTML()
+						//	)
+						//	;
 						if (i % 2 == 0)
 						{
 							//CircleStart(image, navUnit, color);
@@ -182,18 +183,40 @@ namespace CornucopiaV2
 					case Quadrant.WestToSouth:
 					case Quadrant.NorthToEast:
 					case Quadrant.NorthToWest:
-						image
-							.DrawArc
-							(color
-							, lineWidth
-							, navUnit.XFrom + navUnit.XLength * navUnit.XOffset
-							, navUnit.YFrom + navUnit.YLength * navUnit.YOffset
-							, navUnit.XLength * 2
-							, navUnit.YLength * 2
-							, navUnit.StartAngle
-							, navUnit.SweepAngle
-							)
-							;
+						switch (curveType)
+						{
+							case CurveType.Curve:
+								image
+									.DrawArc
+									(color
+									, lineWidth
+									, navUnit.XFrom + navUnit.XLength * navUnit.XOffset
+									, navUnit.YFrom + navUnit.YLength * navUnit.YOffset
+									, navUnit.XLength * 2
+									, navUnit.YLength * 2
+									, navUnit.StartAngle
+									, navUnit.SweepAngle
+									)
+									;
+								break;
+							case CurveType.Line:
+								image
+									.DrawLine
+									(color
+									, lineWidth
+									, navUnit.XFrom
+									, navUnit.YFrom
+									, navUnit.XTo
+									, navUnit.YTo
+									)
+									;
+								break;
+							case CurveType.ZigZag:
+								break;
+							default:
+								break;
+						}
+
 						//image
 						//	.DrawLine
 						//	(color

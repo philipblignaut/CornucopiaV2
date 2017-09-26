@@ -1,10 +1,12 @@
-﻿namespace CornucopiaV2
+﻿using System;
+
+namespace CornucopiaV2
 {
 	public class NavUnit
 	{
 		public Direction StartDirection { get; private set; }
 		public Direction EndDirection { get; private set; }
-		public Quadrant Quadrant { get; private set; }
+		public Quadrant Quadrant { get;  set; }
 		public float XOffset { get => Quadrant.XOffset(); }
 		public float YOffset { get => Quadrant.YOffset(); }
 		public float StartAngle { get => Quadrant.StartAngle(); }
@@ -143,9 +145,16 @@
 							break;
 					}
 					break;
+				default:
+					throw
+						new ArgumentException
+						("Bad turn Character '" + direction + "'", "direction"
+						)
+						;
 			}
-			XTo += Quadrant.XIncrement() * XLength;
-			YTo += Quadrant.YIncrement() * YLength;
+			ConDeb.Print(direction+ Quadrant.ToString());
+			XTo += XIncrement * XLength;
+			YTo += YIncrement * YLength;
 		}
 
 		public override string ToString()
