@@ -152,7 +152,7 @@ namespace CornucopiaV2
 						)
 						;
 			}
-			ConDeb.Print(direction+ Quadrant.ToString());
+			//ConDeb.Print(direction+ Quadrant.ToString());
 			XTo += XIncrement * XLength;
 			YTo += YIncrement * YLength;
 		}

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace CornucopiaV2
 {
@@ -20,6 +21,7 @@ namespace CornucopiaV2
 		{
 			Bitmap = new Bitmap(width, height);
 			Graphics = Graphics.FromImage(Bitmap);
+			Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			Graphics.ResetTransform();
 			FillRectangleSolid(initialColor, 0, 0, width, height);
 		}

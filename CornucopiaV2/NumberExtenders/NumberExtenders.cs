@@ -48,6 +48,19 @@ namespace CornucopiaV2
 	}
 	public static class NumberExtenders
 	{
+
+		public static bool IsPrime
+			(this int number
+			)
+		{
+			return
+				Enumerable
+				.Range(1, number)
+				.Where(x => number % x == 0)
+				.SequenceEqual(new[] { 1, number })
+				;
+		}
+
 		public static bool IsDouble
 		   (this string text
 		   )
@@ -158,7 +171,7 @@ namespace CornucopiaV2
 				result = (value % 2 == 0 ? "0" : "1") + result;
 				value /= 2;
 			}
-			return result;
+			return result.PadLeft(digits,'0');
 		}
 
 	}

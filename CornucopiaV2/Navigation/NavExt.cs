@@ -163,17 +163,6 @@ namespace CornucopiaV2
 							, navUnit.YTo
 							)
 							;
-						//ConDeb
-						//	.Print
-						//	("C " + navUnit.ToString()
-						//	+ C.sp + color.ToHTML()
-						//	)
-						//	;
-						if (i % 2 == 0)
-						{
-							//CircleStart(image, navUnit, color);
-						}
-						//image.Save(@"d:\numbers\fractaline.png", ImageFormat.Png);
 						break;
 					case Quadrant.EastToSouth:
 					case Quadrant.EastToNorth:
@@ -212,41 +201,30 @@ namespace CornucopiaV2
 									;
 								break;
 							case CurveType.ZigZag:
+								image
+									.DrawLine
+									(color
+									, lineWidth
+									, navUnit.XFrom
+									, navUnit.YFrom
+									, navUnit.XTo
+									, navUnit.YFrom
+									)
+									;
+								image
+									.DrawLine
+									(color
+									, lineWidth
+									, navUnit.XTo
+									, navUnit.YFrom
+									, navUnit.XTo
+									, navUnit.YTo
+									)
+									;
 								break;
 							default:
 								break;
 						}
-
-						//image
-						//	.DrawLine
-						//	(color
-						//	, lineWidth
-						//	, navUnit.XFrom
-						//	, navUnit.YFrom
-						//	, navUnit.XTo
-						//	, navUnit.YFrom
-						//	)
-						//	;
-						//image
-						//	.DrawLine
-						//	(color
-						//	, lineWidth
-						//	, navUnit.XTo
-						//	, navUnit.YFrom
-						//	, navUnit.XTo
-						//	, navUnit.YTo
-						//	)
-						//	;
-						if (i % 2 == 0)
-						{
-							//CircleStart(image, navUnit, color);
-						}
-						//ConDeb
-						//	.Print
-						//	("C " + navUnit.ToString()
-						//	+ C.sp + color.ToHTML()
-						//	)
-						//	;
 						break;
 				}
 			}
