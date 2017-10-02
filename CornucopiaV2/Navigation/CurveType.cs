@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
+	[FlagsAttribute]
 	public enum CurveType
 	{
 		Curve = 1,
-		Line = 3,
-		ZigZag = 4,
+		Line = 2,
+		Square = 4,
+		Rose = 8,
+		ZigZag = 16,
 	}
 }

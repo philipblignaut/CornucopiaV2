@@ -153,11 +153,11 @@ namespace CornucopiaV2
         }
 
 		public float CalculatePercent
-			(float lowerValueIncluded
-			, float upperValueExcluded
+			(double lowerValueIncluded
+			, double upperValueExcluded
 			)
 		{
-			return lowerValueIncluded / (upperValueExcluded - 1F) * 100F;
+			return (float)(lowerValueIncluded / (upperValueExcluded) * 100F);
 		}
 
         private static float CheckAndTransformPercent(float percent)

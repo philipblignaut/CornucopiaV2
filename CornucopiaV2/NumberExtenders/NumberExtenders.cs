@@ -49,24 +49,37 @@ namespace CornucopiaV2
 	public static class NumberExtenders
 	{
 
+		//public static bool IsPrime
+		//	(this int number
+		//	)
+		//{
+		//	return
+		//		Enumerable
+		//		.Range(1, number)
+		//		.Where(x => number % x == 0)
+		//		.SequenceEqual(new[] { 1, number })
+		//		;
+		//}
+
 		public static bool IsPrime
 			(this int number
 			)
 		{
 			return
 				Enumerable
-				.Range(1, number)
-				.Where(x => number % x == 0)
-				.SequenceEqual(new[] { 1, number })
-				;
+					.Range
+						(1
+						, number
+						)
+					.Count(x => number % x == 0) == 2
+			;
 		}
 
 		public static bool IsDouble
 		   (this string text
 		   )
 		{
-			double result;
-			return double.TryParse(text, out result);
+			return double.TryParse(text, out double result);
 		}
 
 		public static int ClosestTo

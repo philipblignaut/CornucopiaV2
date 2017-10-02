@@ -213,20 +213,20 @@ namespace CornucopiaV2
                + suffix
                ;
       }
-      public static T Max<T>
-            (this IEnumerable<T> collection
-          , Func< T,T, T >compare
-          )
-        {
-            T max = default(T);
-            collection
-                .Each
-                (elm =>
-                    max = compare(max, elm)
-                )
-                ;
-            return max;
-        }
+      //public static T Max<T>
+      //      (this IEnumerable<T> collection
+      //    , Func< T,T, T >compare
+      //    )
+      //  {
+      //      T max = default(T);
+      //      collection
+      //          .Each
+      //          (elm =>
+      //              max = compare(max, elm)
+      //          )
+      //          ;
+      //      return max;
+      //  }
       public static List<T> AddRangeAndReturn<T>
          (this List<T> list
          , IEnumerable<T> collection

@@ -100,53 +100,14 @@ namespace CornucopiaV2
 			, CorImage image
 			, float lineWidth
 			, CurveType curveType
+			, ColorGradientFactory cgf
 			)
 		{
-			//ConDeb.ConDebPrintDelegate += CatchLine;
 			cImage = image;
-			List<Color> colors = new List<Color>();
-			colors.Add(Color.Red);
-			colors.Add(Color.Green);
-			colors.Add(Color.Green);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Red);
-			colors.Add(Color.Red);
-			colors.Add(Color.Green);
-			colors.Add(Color.Green);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Red);
-			colors.Add(Color.Red);
-			colors.Add(Color.Green);
-			colors.Add(Color.Green);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Red);
-			colors.Add(Color.Red);
-			colors.Add(Color.Green);
-			colors.Add(Color.Green);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Blue);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Magenta);
-			colors.Add(Color.Red);
-			ColorGradientFactory cgf =
-				new ColorGradientFactory
-				(colors.ToArray()
-				)
-				;
 			for (int i = 0; i < navUnitList.Count; i++)
 			{
 				Color color = cgf.ColorAtPercent((0F + i) / (navUnitList.Count - 1F) * 100F);
 				NavUnit navUnit = navUnitList[i];
-				//ConDeb.Print(navUnit.Quadrant.ToString());
 				switch (navUnit.Quadrant)
 				{
 					case Quadrant.EastToEast:
@@ -200,35 +161,173 @@ namespace CornucopiaV2
 									)
 									;
 								break;
+							case CurveType.Square:
+								switch (navUnit.StartDirection)
+								{
+									case Direction.East:
+									case Direction.West:
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom
+											, navUnit.YFrom
+											, navUnit.XTo
+											, navUnit.YFrom
+											)
+											;
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XTo
+											, navUnit.YFrom
+											, navUnit.XTo
+											, navUnit.YTo
+											)
+											;
+										break;
+									case Direction.South:
+									case Direction.North:
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom
+											, navUnit.YFrom
+											, navUnit.XFrom
+											, navUnit.YTo
+											)
+											;
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom
+											, navUnit.YTo
+											, navUnit.XTo
+											, navUnit.YTo
+											)
+											;
+										break;
+									default:
+										break;
+								}
+								break;
+							case CurveType.Rose:
+								switch (navUnit.StartDirection)
+								{
+									case Direction.South:
+									case Direction.North:
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom
+											, navUnit.YTo
+											, navUnit.XFrom
+											, navUnit.YTo
+											)
+											;
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XTo
+											, navUnit.YFrom
+											, navUnit.XTo
+											, navUnit.YTo
+											)
+											;
+										break;
+									case Direction.East:
+									case Direction.West:
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom
+											, navUnit.YFrom
+											, navUnit.XTo
+											, navUnit.YTo
+											)
+											;
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom
+											, navUnit.YTo
+											, navUnit.XTo
+											, navUnit.YTo
+											)
+											;
+										break;
+									default:
+										break;
+								}
+								break;
 							case CurveType.ZigZag:
-								image
-									.DrawLine
-									(color
-									, lineWidth
-									, navUnit.XFrom
-									, navUnit.YFrom
-									, navUnit.XTo
-									, navUnit.YFrom
-									)
-									;
-								image
-									.DrawLine
-									(color
-									, lineWidth
-									, navUnit.XTo
-									, navUnit.YFrom
-									, navUnit.XTo
-									, navUnit.YTo
-									)
-									;
+								switch (navUnit.StartDirection)
+								{
+									case Direction.South:
+									case Direction.North:
+										image
+											.DrawLine
+											(Color.Blue
+											, lineWidth
+											, navUnit.XFrom // zz
+											, navUnit.YTo
+											, navUnit.XFrom
+											, navUnit.YFrom
+											)
+											;
+										image
+											.DrawLine
+											(Color.Black
+											, 3
+											, navUnit.XFrom  // zz working
+											, navUnit.YFrom
+											, navUnit.XFrom
+											, navUnit.YTo
+											)
+											;
+										break;
+									case Direction.East:
+									case Direction.West:
+										//image
+										//	.DrawLine
+										//	(Color.Red
+										//	, lineWidth
+										//	, navUnit.XFrom  // zz
+										//	, navUnit.YFrom
+										//	, navUnit.XFrom
+										//	, navUnit.YTo
+										//	)
+										//	;
+										//image
+										//	.DrawLine
+										//	(Color.HotPink
+										//	, lineWidth
+										//	, navUnit.XFrom  // zz
+										//	, navUnit.YFrom
+										//	, navUnit.XFrom
+										//	, navUnit.YTo
+										//	)
+										//	;
+										break;
+									default:
+										break;
+								}
 								break;
 							default:
 								break;
 						}
 						break;
+					default:
+						break;
 				}
 			}
-
 		}
 
 		private static void CircleStart
