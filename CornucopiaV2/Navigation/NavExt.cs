@@ -89,6 +89,7 @@ namespace CornucopiaV2
 
 		private static int row = 30;
 		private static CorImage cImage = null;
+
 		private static void CatchLine(string line)
 		{
 			cImage.DrawString(line, "Consolas", 7, Color.Black, 150, row);
@@ -127,11 +128,11 @@ namespace CornucopiaV2
 						break;
 					case Quadrant.EastToSouth:
 					case Quadrant.EastToNorth:
-					case Quadrant.SouthToWest:
+					case Quadrant.SouthToWest: // ok
 					case Quadrant.SouthToEast:
-					case Quadrant.WestToNorth:
+					case Quadrant.WestToNorth: // pk
 					case Quadrant.WestToSouth:
-					case Quadrant.NorthToEast:
+					case Quadrant.NorthToEast: // ok
 					case Quadrant.NorthToWest:
 						switch (curveType)
 						{
@@ -274,18 +275,18 @@ namespace CornucopiaV2
 									case Direction.North:
 										image
 											.DrawLine
-											(Color.Blue
+											(color
 											, lineWidth
 											, navUnit.XFrom // zz
 											, navUnit.YTo
-											, navUnit.XFrom
-											, navUnit.YFrom
+											, navUnit.XTo
+											, navUnit.YTo
 											)
 											;
 										image
 											.DrawLine
-											(Color.Black
-											, 3
+											(color
+											, lineWidth
 											, navUnit.XFrom  // zz working
 											, navUnit.YFrom
 											, navUnit.XFrom
@@ -295,26 +296,41 @@ namespace CornucopiaV2
 										break;
 									case Direction.East:
 									case Direction.West:
-										//image
-										//	.DrawLine
-										//	(Color.Red
-										//	, lineWidth
-										//	, navUnit.XFrom  // zz
-										//	, navUnit.YFrom
-										//	, navUnit.XFrom
-										//	, navUnit.YTo
-										//	)
-										//	;
-										//image
-										//	.DrawLine
-										//	(Color.HotPink
-										//	, lineWidth
-										//	, navUnit.XFrom  // zz
-										//	, navUnit.YFrom
-										//	, navUnit.XFrom
-										//	, navUnit.YTo
-										//	)
-										//	;
+										ConDeb
+											.Print
+											(navUnit.StartDirection
+											, navUnit.Quadrant
+											)
+											;
+										image
+																					.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom  // zz
+											, navUnit.YFrom
+											, navUnit.XFrom
+											, navUnit.YTo
+											)
+											;
+										image
+											.DrawLine
+											(color
+											, lineWidth
+											, navUnit.XFrom  // zz
+											, navUnit.YTo
+											, navUnit.XTo
+											, navUnit.YTo
+											)
+											;
+										image
+											.Save
+											(@"d:\numbers\philip\newphilip"
+											+ curveType.ToString()
+											+ "4"
+											+ "11111111.gif"
+											, ImageFormat.Gif
+											)
+											;
 										break;
 									default:
 										break;

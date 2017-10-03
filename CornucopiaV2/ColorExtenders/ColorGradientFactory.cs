@@ -191,49 +191,41 @@ namespace CornucopiaV2
 		   )
 		{
 			Color color = colorAtPercent[0F];
-            percent = CheckAndTransformPercent(percent);
-            if (colorAtPercent.ContainsKey(percent))
-            {
-                color = colorAtPercent[percent];
-            }
-            else
-            {
-                float percStart = 0;
-                float percEnd = 0;
-                Color colorStart = colorAtPercent[0F];
-                Color colorEnd = colorAtPercent[0F];
-                colorAtPercent
-                   .Where(cap => cap.Key <= percent)
-                   .Last()
-                   .With
-                   (pair =>
-                   {
-                       percStart = pair.Key;
-                       colorStart = pair.Value;
-                   }
-                   )
-                   ;
-                colorAtPercent
-                   .Where(cap => cap.Key >= percent)
-                   .First()
-                   .With
-                   (pair =>
-                   {
-                       percEnd = pair.Key;
-                       colorEnd = pair.Value;
-                   }
-                   )
-                   ;
-                float percDiff = (percent - percStart) / (percEnd - percStart);
-                int a = (int)(colorStart.A + percDiff * (colorEnd.A - colorStart.A));
-                int r = (int)(colorStart.R + percDiff * (colorEnd.R - colorStart.R));
-                int g = (int)(colorStart.G + percDiff * (colorEnd.G - colorStart.G));
-                int b = (int)(colorStart.B + percDiff * (colorEnd.B - colorStart.B));
+			percent = CheckAndTransformPercent(percent);
+			if (colorAtPercent.ContainsKey(percent))
+			{
+				color = colorAtPercent[percent];
+			}
+			else
+			{
+				float percStart = 0;
+				float percEnd = 0;
+				Color colorStart = colorAtPercent[0F];
+				Color colorEnd = colorAtPercent[0F];
+				KeyValuePair<float, Color> kvpStart =
+				colorAtPercent
+				   .Where(cap => cap.Key <= percent)
+				   .Last()
+				   ;
+				percStart = kvpStart.Key;
+				colorStart = kvpStart.Value;
+				KeyValuePair<float, Color> kvpEnd =
+				colorAtPercent
+				   .Where(cap => cap.Key >= percent)
+				   .First()
+				   ;
+				percEnd = kvpEnd.Key;
+				colorEnd = kvpEnd.Value;
+				float percDiff = (percent - percStart) / (percEnd - percStart);
+				int a = (int)(colorStart.A + percDiff * (colorEnd.A - colorStart.A));
+				int r = (int)(colorStart.R + percDiff * (colorEnd.R - colorStart.R));
+				int g = (int)(colorStart.G + percDiff * (colorEnd.G - colorStart.G));
+				int b = (int)(colorStart.B + percDiff * (colorEnd.B - colorStart.B));
 
 				color = Color.FromArgb(a, r, g, b);
-            }
-            return color;
-        }
+			}
+			return color;
+		}
 
     }
 }

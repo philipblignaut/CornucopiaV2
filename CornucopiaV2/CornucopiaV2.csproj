@@ -64,12 +64,14 @@
     <Compile Include="DataManagerSupport\ITabDelimitedValues.cs" />
     <Compile Include="DataManagerSupport\MethodStatistics.cs" />
     <Compile Include="DateTimeExtenders\DateTimeExtenders.cs" />
+    <Compile Include="Exceptions\ExceptionOf.cs" />
+    <Compile Include="Exceptions\ExceptionOfBase.cs" />
     <Compile Include="Extenders\EnumExtenders.cs" />
-    <Compile Include="Extenders\ExceptionExtenders.cs" />
+    <Compile Include="Exceptions\ExceptionExtenders.cs" />
     <Compile Include="Extenders\IEnumerableExtenders.cs" />
     <Compile Include="Extenders\IntExtenders.cs" />
     <Compile Include="File\CorFile.cs" />
-    <Compile Include="M\M.cs" />
+    <Compile Include="M\Maths.cs" />
     <Compile Include="Navigation\CurveType.cs" />
     <Compile Include="Navigation\Direction.cs" />
     <Compile Include="Navigation\NavExt.cs" />
