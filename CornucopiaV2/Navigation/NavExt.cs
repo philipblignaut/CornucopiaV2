@@ -269,6 +269,12 @@ namespace CornucopiaV2
 								}
 								break;
 							case CurveType.ZigZag:
+								//ConDeb
+								//	.Print
+								//	("{0,5} ".FormatWith(navUnit.StartDirection)
+								//	+ navUnit.Quadrant
+								//	)
+								//	;
 								switch (navUnit.StartDirection)
 								{
 									case Direction.South:
@@ -296,14 +302,8 @@ namespace CornucopiaV2
 										break;
 									case Direction.East:
 									case Direction.West:
-										ConDeb
-											.Print
-											(navUnit.StartDirection
-											, navUnit.Quadrant
-											)
-											;
 										image
-																					.DrawLine
+											.DrawLine
 											(color
 											, lineWidth
 											, navUnit.XFrom  // zz
@@ -322,19 +322,19 @@ namespace CornucopiaV2
 											, navUnit.YTo
 											)
 											;
-										image
-											.Save
-											(@"d:\numbers\philip\newphilip"
-											+ curveType.ToString()
-											+ "4"
-											+ "11111111.gif"
-											, ImageFormat.Gif
-											)
-											;
 										break;
 									default:
 										break;
 								}
+								//image
+								//	.Save
+								//	(@"d:\numbers\philip\newphilip"
+								//	+ curveType.ToString()
+								//	+ "4"
+								//	+ "11111111.gif"
+								//	, ImageFormat.Gif
+								//	)
+								//	;
 								break;
 							default:
 								break;

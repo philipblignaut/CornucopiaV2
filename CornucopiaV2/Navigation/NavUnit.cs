@@ -128,6 +128,11 @@ namespace CornucopiaV2
 					}
 					break;
 				case "F":
+				default:
+					if (direction != "F")
+					{
+						ConDeb.Print(direction + " ???");
+					}
 					EndDirection = StartDirection;
 					switch (EndDirection)
 					{
@@ -145,12 +150,13 @@ namespace CornucopiaV2
 							break;
 					}
 					break;
-				default:
-					throw
-						new ArgumentException
-						("Bad turn Character '" + direction + "'", "direction"
-						)
-						;
+				//default:
+					//throw
+					//	new ArgumentException
+					//	("Bad turn Character '" + direction + "'", "direction"
+					//	)
+					//	;
+					//break;
 			}
 			XTo += XIncrement * XLength;
 			YTo += YIncrement * YLength;

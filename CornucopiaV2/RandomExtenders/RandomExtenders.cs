@@ -6,20 +6,34 @@ using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
-    public class CRandom
+    public static class CRandom
     {
+		private static Random random = new Random(Environment.TickCount);
 
-        private Random random = new Random((int)DateTime.Now.Ticks);
+		public static  int Next()
+		{
+			return random.Next();
+		}
 
-        public int NextRangeIncl(int from, int to)
-        {
-            return
-                random
-                .Next
-                (from
-                , to + 1
-                )
-                ;
-        }
-    }
+		public static int Next(int maxValue)
+		{
+			return random.Next(maxValue);
+		}
+
+		public static int Next(int minValue, int maxValue)
+		{
+			return random.Next(minValue, maxValue);
+		}
+
+		public static double NextDouble()
+		{
+			return random.NextDouble();
+		}
+
+		public static void NextBytes(byte[] buffer)
+		{
+			random.NextBytes(buffer);
+		}
+
+	}
 }

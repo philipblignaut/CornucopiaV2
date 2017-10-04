@@ -17,13 +17,25 @@ namespace CornucopiaV2
 		public Graphics Graphics { get; private set; }
 		public bool Disposed { get; private set; }
 		// max w/h sqrt(2GB/4)
-		public CorImage(int width, int height, Color initialColor)
+		public CorImage(int imageWidth, int imageHeight, Color initialColor)
 		{
-			Bitmap = new Bitmap(width, height);
+			Bitmap = new Bitmap(imageWidth, imageHeight);
 			Graphics = Graphics.FromImage(Bitmap);
 			Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			Graphics.ResetTransform();
-			FillRectangleSolid(initialColor, 0, 0, width, height);
+			Graphics.Clear(initialColor);
+		}
+
+		public CorImage
+			(int imageWidth
+			, int imageHeight
+			)
+			:this
+				 (imageWidth
+				 , imageHeight
+				 , Color.White
+				 )
+		{
 		}
 
 		public void FillRectangleSolid
@@ -61,8 +73,15 @@ namespace CornucopiaV2
 			, PointF to
 			)
         {
-            Pen pen = new Pen(color, linewidth);
-            Graphics.DrawLine(pen, from, to);
+			try
+			{
+				Pen pen = new Pen(color, linewidth);
+				Graphics.DrawLine(pen, from, to);
+			}
+			catch (Exception ex)
+			{
+				ConDeb.Print(ex.VerboseMessage());
+			}
         }
 
         public void DrawString
