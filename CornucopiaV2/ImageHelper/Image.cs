@@ -66,23 +66,16 @@ namespace CornucopiaV2
 				)
 				;
 		}
-        public void DrawLine
+		public void DrawLine
 			(Color color
 			, float linewidth
 			, PointF from
 			, PointF to
 			)
-        {
-			try
-			{
-				Pen pen = new Pen(color, linewidth);
-				Graphics.DrawLine(pen, from, to);
-			}
-			catch (Exception ex)
-			{
-				ConDeb.Print(ex.VerboseMessage());
-			}
-        }
+		{
+			Pen pen = new Pen(color, linewidth);
+			Graphics.DrawLine(pen, from, to);
+		}
 
         public void DrawString
             (string text
