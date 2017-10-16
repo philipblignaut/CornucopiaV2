@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace CornucopiaV2
 {
@@ -19,6 +20,8 @@ namespace CornucopiaV2
 		public float YTo { get; private set; }
 		public float XLength { get; private set; }
 		public float YLength { get; private set; }
+		public PointF PointFrom { get => new PointF(XFrom, YFrom); }
+		public PointF PointTo { get => new PointF(XTo, YTo); }
 
 		public NavUnit
 			(Direction direction

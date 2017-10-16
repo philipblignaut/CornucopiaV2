@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace CornucopiaV2
 {
@@ -196,12 +197,18 @@ namespace CornucopiaV2
 			   ;
 		}
 
-		public
-			static double ToRadians
+		public static double ToRadians
 		   (this double degrees
 		   )
 		{
 			return Math.PI * degrees / 180.0;
+		}
+
+		public static float ToRadians
+		   (this float degrees
+		   )
+		{
+			return (float)(Math.PI * degrees / 180.0);
 		}
 
 		public static double ToDegrees
@@ -210,6 +217,37 @@ namespace CornucopiaV2
 		{
 			return radians * (180.0 / Math.PI);
 		}
+
+		public static float ToDegrees
+		   (this float radians
+		   )
+		{
+			return (float)(radians * (180.0 / Math.PI));
+		}
+
+		//public static double AngleBetween
+		//	(this Vector2 vector1
+		//	, Vector2 vector2
+		//	)
+		//{
+		//	double angle1 = Math.Atan(vector1.Y / vector1.X);
+		//	double angle2 = Math.Atan(vector2.Y / vector2.X);
+		//	double angle = angle2 / angle1;
+		//	return angle;
+		//}
+
+		//public static double GetAngle
+		//	(this Vector2 A
+		//	, Vector2 B
+		//	)
+		//{
+		//	// |A·B| = |A| |B| COS(θ)
+		//	// |A×B| = |A| |B| SIN(θ)
+
+		//	return Math.Atan2(A * B, A.Dot(B));
+		//}
+
+		//public double Magnitude { get { return Math.Sqrt(Dot(this, this)); } }
 
 		public static string ToBinary
 			(this int value
@@ -222,7 +260,7 @@ namespace CornucopiaV2
 				result = (value % 2 == 0 ? "0" : "1") + result;
 				value /= 2;
 			}
-			return result.PadLeft(digits,'0');
+			return result.PadLeft(digits, '0');
 		}
 
 	}

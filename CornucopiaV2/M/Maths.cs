@@ -16,6 +16,13 @@ namespace CornucopiaV2
 			return Math.Sqrt(d);
 		}
 
+		public static double Abs
+			(this double d
+			)
+		{
+			return Math.Abs(d);
+		}
+
 		public static double Acos
 			(this double angleRadians
 			)
