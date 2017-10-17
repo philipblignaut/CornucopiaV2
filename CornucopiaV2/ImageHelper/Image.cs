@@ -86,8 +86,6 @@ namespace CornucopiaV2
             , float y
             )
         {
-			//Graphics g = Graphics.FromImage(Bitmap);
-			//g.RotateTransform(20);
 			Graphics
 				.DrawString
                 (text

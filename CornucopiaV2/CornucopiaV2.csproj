@@ -72,6 +72,7 @@
     <Compile Include="Extenders\IEnumerableExtenders.cs" />
     <Compile Include="Extenders\IntExtenders.cs" />
     <Compile Include="File\CorFile.cs" />
+    <Compile Include="M\Class1.cs" />
     <Compile Include="M\Maths.cs" />
     <Compile Include="Navigation\A.cs" />
     <Compile Include="Navigation\CurveType.cs" />
