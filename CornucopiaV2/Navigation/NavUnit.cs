@@ -20,8 +20,8 @@ namespace CornucopiaV2
 		public float YTo { get; private set; }
 		public float XLength { get; private set; }
 		public float YLength { get; private set; }
-		public PointF PointFrom { get => new PointF(XFrom, YFrom); }
-		public PointF PointTo { get => new PointF(XTo, YTo); }
+		public PointF PointFFrom { get => new PointF(XFrom, YFrom); }
+		public PointF PointFTo { get => new PointF(XTo, YTo); }
 
 		public NavUnit
 			(Direction direction

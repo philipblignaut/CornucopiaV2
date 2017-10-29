@@ -36,6 +36,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\LSystem\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -72,7 +75,7 @@
     <Compile Include="Extenders\IEnumerableExtenders.cs" />
     <Compile Include="Extenders\IntExtenders.cs" />
     <Compile Include="File\CorFile.cs" />
-    <Compile Include="M\Class1.cs" />
+    <Compile Include="INI\INIHandler.cs" />
     <Compile Include="M\Maths.cs" />
     <Compile Include="Navigation\A.cs" />
     <Compile Include="Navigation\CurveType.cs" />
@@ -84,6 +87,9 @@
     <Compile Include="Navigation\PolarD.cs" />
     <Compile Include="Navigation\Quadrant.cs" />
     <Compile Include="RandomExtenders\RandomExtenders.cs" />
+    <Compile Include="SegmentExt\Segment.cs" />
+    <Compile Include="SegmentExt\Segments.cs" />
+    <Compile Include="SegmentExt\SegmentsBetween.cs" />
     <Compile Include="StringExtenders\StringExtendersx.cs" />
     <Compile Include="ForLoopExtenders\ForLoopExtenders.cs" />
     <Compile Include="FormExtenders\FormControlExtenders.cs" />
@@ -112,12 +118,17 @@
     <Compile Include="ThreadExtenders\TypedActionParameterPair.cs" />
     <Compile Include="ThreadExtenders\TypedFuncArgumentPair.cs" />
     <Compile Include="TimeSpanExtenders\TimeSpanExt.cs" />
+    <Compile Include="Transcform\TransformExt.cs" />
     <Compile Include="Vectors\VectorExt.cs" />
     <Compile Include="WebForm\KVPAction.cs" />
     <Compile Include="WebForm\WebFormExtenders.cs" />
     <Compile Include="Web\Web.cs" />
     <Compile Include="XmlExtenders\XmlSerializeDeserialize.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -21,9 +21,9 @@ namespace CornucopiaV2
 		{
 			Bitmap = new Bitmap(imageWidth, imageHeight);
 			Graphics = Graphics.FromImage(Bitmap);
+			Graphics.Clear(initialColor);
 			Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			Graphics.ResetTransform();
-			Graphics.Clear(initialColor);
 		}
 
 		public CorImage

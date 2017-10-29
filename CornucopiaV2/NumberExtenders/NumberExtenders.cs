@@ -24,6 +24,7 @@ namespace CornucopiaV2
 				return Math.Abs(Max - Min);
 			}
 		}
+
 		public Range Zoom
 		   (double ratio
 		   )
@@ -225,42 +226,31 @@ namespace CornucopiaV2
 			return (float)(radians * (180.0 / Math.PI));
 		}
 
-		//public static double AngleBetween
-		//	(this Vector2 vector1
-		//	, Vector2 vector2
-		//	)
-		//{
-		//	double angle1 = Math.Atan(vector1.Y / vector1.X);
-		//	double angle2 = Math.Atan(vector2.Y / vector2.X);
-		//	double angle = angle2 / angle1;
-		//	return angle;
-		//}
-
-		//public static double GetAngle
-		//	(this Vector2 A
-		//	, Vector2 B
-		//	)
-		//{
-		//	// |A·B| = |A| |B| COS(θ)
-		//	// |A×B| = |A| |B| SIN(θ)
-
-		//	return Math.Atan2(A * B, A.Dot(B));
-		//}
-
-		//public double Magnitude { get { return Math.Sqrt(Dot(this, this)); } }
-
-		public static string ToBinary
-			(this int value
-			, int digits
+		public static double ToCompassDegrees
+			(this double angleDegrees
 			)
 		{
-			string result = C.es;
-			while (value > 0)
+			while (angleDegrees < 0)
 			{
-				result = (value % 2 == 0 ? "0" : "1") + result;
-				value /= 2;
+				angleDegrees += 360;
 			}
-			return result.PadLeft(digits, '0');
+			while (angleDegrees > 360)
+			{
+				angleDegrees -= 360;
+			}
+			return angleDegrees;
+		}
+
+		public static double Translate
+			(this double value
+			, double fromMin
+			, double fromMax
+			, double toMin
+			, double toMax
+			)
+		{
+			double ratio = ((value - fromMin) / (fromMax - fromMin)).Abs();
+			return toMin + ratio * (toMax - toMin);
 		}
 
 	}

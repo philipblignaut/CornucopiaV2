@@ -56,20 +56,20 @@ namespace CornucopiaV2
 			return hangle;
 		}
 
-		public static double ZeroTo360Degrees
-			(this double angleDegrees
-			)
-		{
-			while (angleDegrees < 0)
-			{
-				angleDegrees += 360;
-			}
-			while (angleDegrees > 360)
-			{
-				angleDegrees -= 360;
-			}
-			return angleDegrees;
-		}
+		//public static double ZeroTo360Degrees
+		//	(this double angleDegrees
+		//	)
+		//{
+		//	while (angleDegrees < 0)
+		//	{
+		//		angleDegrees += 360;
+		//	}
+		//	while (angleDegrees > 360)
+		//	{
+		//		angleDegrees -= 360;
+		//	}
+		//	return angleDegrees;
+		//}
 
 		public static double FixDegrees
 			(this double angleDegrees
@@ -80,6 +80,21 @@ namespace CornucopiaV2
 				angleDegrees -= 360;
 			}
 			while (angleDegrees < -180)
+			{
+				angleDegrees += 360;
+			}
+			return angleDegrees;
+		}
+
+		public static double FixDegrees0T360
+			(this double angleDegrees
+			)
+		{
+			while (angleDegrees > 360)
+			{
+				angleDegrees -= 360;
+			}
+			while (angleDegrees < 0)
 			{
 				angleDegrees += 360;
 			}

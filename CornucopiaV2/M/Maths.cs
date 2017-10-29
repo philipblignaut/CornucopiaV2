@@ -9,6 +9,13 @@ namespace CornucopiaV2
 	public static class Maths
 	{
 
+		public static double Sign
+			(this double d
+			)
+		{
+			return d == 0 ? 0 : d > 0 ? 1 : -1;
+		}
+
 		public static double Sqrt
 			(this double d
 			)
@@ -44,21 +51,21 @@ namespace CornucopiaV2
 			return Math.Atan(angleRadians);
 		}
 
-		public static float Sin
+		public static float SinF
 			(this float angleRadians
 			)
 		{
 			return (float)Math.Sin(angleRadians);
 		}
 
-		public static float Cos
+		public static float CosF
 			(this float angleRadians
 			)
 		{
 			return (float)Math.Cos(angleRadians);
 		}
 
-		public static float Tan
+		public static float TanF
 			(this float angleRadians
 			)
 		{
@@ -84,6 +91,27 @@ namespace CornucopiaV2
 			)
 		{
 			return Math.Tan(angleRadians);
+		}
+
+		public static double SinD
+			(this double angleDegrees
+			)
+		{
+			return Math.Sin(angleDegrees.ToRadians());
+		}
+
+		public static double CosD
+			(this double angleDegrees
+			)
+		{
+			return Math.Cos(angleDegrees.ToRadians());
+		}
+
+		public static double TanD
+			(this double angleDegrees
+			)
+		{
+			return Math.Tan(angleDegrees.ToRadians());
 		}
 
 		public static float Range
