@@ -102,7 +102,24 @@ namespace CornucopiaV2
 			Graphics.DrawLine(pen, from, to);
 		}
 
-        public void DrawString
+		public void DrawLines
+			(Color color
+			, float linewidth
+			, IEnumerable< PointF> points
+			)
+		{
+			PointF[] pArray = points.ToArray();
+			if (pArray.Length>1)
+			{
+				Pen pen = new Pen(color, linewidth);
+				for (int i = 1; i < pArray.Length; i++)
+				{
+					Graphics.DrawLine(pen, pArray[i-1], pArray[i]);
+				}
+			}
+		}
+
+		public void DrawString
             (string text
             , string fontFamilyName
 			, float fontSize

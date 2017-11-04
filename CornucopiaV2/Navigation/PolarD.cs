@@ -11,6 +11,10 @@ namespace CornucopiaV2
 		public PointD Origin { get; private set; }
 		public double Radius { get; private set; }
 		public double Angle { get; private set; }
+#pragma warning disable RCNoAssignment // No assignment to a get-only auto-property.
+		public double Degrees { get => Angle.ToDegrees(); }
+#pragma warning restore RCNoAssignment // No assignment to a get-only auto-property.
+
 		public PolarD
 			(PointD origin
 			, double radius
@@ -20,11 +24,6 @@ namespace CornucopiaV2
 			Origin = origin;
 			Radius = radius;
 			Angle = angle;
-		}
-
-		public double Degrees
-		{
-			get => Angle.ToDegrees();
 		}
 
 		public void Resize

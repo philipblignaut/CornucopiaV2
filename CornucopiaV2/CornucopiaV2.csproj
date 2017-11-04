@@ -31,6 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Presentation.2.8.59\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=3.9.361.9040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Presentation.2.8.59\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Presentation, Version=2.8.59.9040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Presentation.2.8.59\lib\net40\Spire.Presentation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -79,14 +88,24 @@
     <Compile Include="INI\INIHandler.cs" />
     <Compile Include="M\Maths.cs" />
     <Compile Include="Navigation\A.cs" />
+    <Compile Include="Navigation\AngleAttribute.cs" />
     <Compile Include="Navigation\CurveType.cs" />
     <Compile Include="Navigation\Direction.cs" />
+    <Compile Include="Navigation\IncrementAttribute.cs" />
     <Compile Include="Navigation\NavExt.cs" />
     <Compile Include="Navigation\NavUnit.cs" />
+    <Compile Include="Navigation\OffsetAttribute.cs" />
     <Compile Include="Navigation\PointD.cs" />
     <Compile Include="Navigation\PointFExt.cs" />
     <Compile Include="Navigation\PolarD.cs" />
     <Compile Include="Navigation\Quadrant.cs" />
+    <Compile Include="Navigation\QuadrantExtender.cs" />
+    <Compile Include="Navigation\StartAngleAttribute.cs" />
+    <Compile Include="Navigation\SweepAngleAttribute.cs" />
+    <Compile Include="Navigation\XffsetAttribute.cs" />
+    <Compile Include="Navigation\XIncrementAttribute.cs" />
+    <Compile Include="Navigation\YIncrementAttribute.cs" />
+    <Compile Include="Navigation\YOffsetAttribute.cs" />
     <Compile Include="RandomExtenders\RandomExtenders.cs" />
     <Compile Include="SegmentExt\Segment.cs" />
     <Compile Include="SegmentExt\Segments.cs" />
@@ -120,6 +139,7 @@
     <Compile Include="ThreadExtenders\TypedFuncArgumentPair.cs" />
     <Compile Include="TimeSpanExtenders\TimeSpanExt.cs" />
     <Compile Include="Transcform\TransformExt.cs" />
+    <Compile Include="Vectors\PosVector.cs" />
     <Compile Include="Vectors\VectorExt.cs" />
     <Compile Include="WebForm\KVPAction.cs" />
     <Compile Include="WebForm\WebFormExtenders.cs" />

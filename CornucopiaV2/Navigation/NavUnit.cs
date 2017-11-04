@@ -8,20 +8,24 @@ namespace CornucopiaV2
 		public Direction StartDirection { get; private set; }
 		public Direction EndDirection { get; private set; }
 		public Quadrant Quadrant { get;  set; }
+#pragma warning disable RCNoAssignment // No assignment to a get-only auto-property.
 		public float XOffset { get => Quadrant.XOffset(); }
 		public float YOffset { get => Quadrant.YOffset(); }
 		public float StartAngle { get => Quadrant.StartAngle(); }
 		public float SweepAngle { get => Quadrant.SweepAngle(); }
 		public float XIncrement { get => Quadrant.XIncrement(); }
 		public float YIncrement { get => Quadrant.YIncrement(); }
+#pragma warning restore RCNoAssignment // No assignment to a get-only auto-property.
 		public float XFrom { get; private set; }
 		public float YFrom { get; private set; }
 		public float XTo { get; private set; }
 		public float YTo { get; private set; }
 		public float XLength { get; private set; }
 		public float YLength { get; private set; }
+#pragma warning disable RCNoAssignment // No assignment to a get-only auto-property.
 		public PointF PointFFrom { get => new PointF(XFrom, YFrom); }
 		public PointF PointFTo { get => new PointF(XTo, YTo); }
+#pragma warning restore RCNoAssignment // No assignment to a get-only auto-property.
 
 		public NavUnit
 			(Direction direction

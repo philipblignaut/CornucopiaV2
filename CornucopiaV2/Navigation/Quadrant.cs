@@ -67,132 +67,27 @@ namespace CornucopiaV2
 		[SweepAngle(90)]
 		[XOffset(-2)]
 		[YOffset(-1)]
-		[XIncrement(-1)]
-		[YIncrement(-1)]
+		[XIncrement(-10)]
+		[YIncrement(-10)]
 		NorthToWest = 128,
 
-		[XIncrement(1)]
+		[XIncrement(10)]
 		[YIncrement(0)]
 		EastToEast = 256,
 		[XIncrement(0)]
-		[YIncrement(1)]
+		[YIncrement(10)]
 		SouthToSouth = 512,
-		[XIncrement(-1)]
+		[XIncrement(-10)]
 		[YIncrement(0)]
 		WestToWest = 1024,
 		[XIncrement(0)]
-		[YIncrement(-1)]
+		[YIncrement(-10)]
 		NorthToNorth = 2048,
 
 		EastToWest = 4096,
 		SouthToNorth = 8192,
 		WestToEast = 16384,
 		NorthToSouth = 32768,
-	}
-
-	#region Angle
-
-	public abstract class AngleAttribute : Attribute
-	{
-		public float Angle { get; private set; }
-		public AngleAttribute(float angle) { Angle = angle; }
-	}
-
-	public class StartAngleAttribute : AngleAttribute
-	{
-		public StartAngleAttribute(float angle) : base(angle) { }
-	}
-
-	public class SweepAngleAttribute : AngleAttribute
-	{
-		public SweepAngleAttribute(float angle) : base(angle) { }
-	}
-
-	#endregion
-
-	#region Offset
-
-	public abstract class OffsetAttribute : Attribute
-	{
-		public float Offset { get; private set; }
-		public OffsetAttribute(float offset) { Offset = offset; }
-	}
-
-	public class XOffsetAttribute : OffsetAttribute
-	{
-		public XOffsetAttribute(float offset) : base(offset) { }
-	}
-
-	public class YOffsetAttribute : OffsetAttribute
-	{
-		public YOffsetAttribute(float offset) : base(offset) { }
-	}
-
-	#endregion
-
-	#region Increment
-
-	public abstract class IncrementAttribute : Attribute
-	{
-		public int Unit { get; private set; }
-		public IncrementAttribute(int unit) { Unit = unit; }
-	}
-
-	public class XIncrementAttribute : IncrementAttribute
-	{
-		public XIncrementAttribute(int unit) : base(unit) { }
-	}
-
-	public class YIncrementAttribute : IncrementAttribute
-	{
-		public YIncrementAttribute(int unit) : base(unit) { }
-	}
-
-	#endregion
-	public static class QuadrantExtender
-	{
-		public static float StartAngle
-			(this Quadrant quadrant
-			)
-		{
-			return quadrant.GetAttribute<StartAngleAttribute>().Angle;
-		}
-
-		public static float SweepAngle
-			(this Quadrant quadrant
-			)
-		{
-			return quadrant.GetAttribute<SweepAngleAttribute>().Angle;
-		}
-
-		public static float XOffset
-			(this Quadrant quadrant
-			)
-		{
-			return quadrant.GetAttribute<XOffsetAttribute>().Offset;
-		}
-
-		public static float YOffset
-			(this Quadrant quadrant
-			)
-		{
-			return quadrant.GetAttribute<YOffsetAttribute>().Offset;
-		}
-
-		public static float XIncrement
-			(this Quadrant quadrant
-			)
-		{
-			return quadrant.GetAttribute<XIncrementAttribute>().Unit;
-		}
-
-		public static float YIncrement
-			(this Quadrant quadrant
-			)
-		{
-			return quadrant.GetAttribute<YIncrementAttribute>().Unit;
-		}
-
 	}
 
 }
