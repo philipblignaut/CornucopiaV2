@@ -85,7 +85,7 @@ namespace CornucopiaV2
 					return sections;
 				}
 
-				capacity = capacity * 2;
+				capacity *= * 2;
 			}
 		}
 
