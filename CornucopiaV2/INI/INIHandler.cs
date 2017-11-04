@@ -43,24 +43,6 @@ namespace CornucopiaV2
 			)
 			;
 
-		public int GetPrivateProfileSection
-			(string section
-			, IntPtr keyValue
-			, int size
-			)
-
-		{
-			return
-				INIHandler
-				.GetPrivateProfileSection
-				(section
-				, keyValue
-				, size
-				, FilePath
-				)
-				;
-		}
-
 		[DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		private static extern bool WritePrivateProfileString
@@ -70,6 +52,17 @@ namespace CornucopiaV2
 			, string filePath
 			)
 			;
+
+		public int Capacity { get; private set; } = 512;
+
+		public string FilePath { get; private set; }
+
+		/// <summary>Record Constructor</summary>
+		/// <param name="filePath"><see cref="FilePath"/></param>
+		public INIHandler(string filePath)
+		{
+			FilePath = filePath;
+		}
 
 		public bool WritePrivateProfileString
 			(string section
@@ -88,32 +81,21 @@ namespace CornucopiaV2
 					;
 		}
 
-		/// <summary>Record Constructor</summary>
-		/// <param name="filePath"><see cref="FilePath"/></param>
-		public INIHandler(string filePath)
-		{
-			FilePath = filePath;
-		}
-
-		public int Capacity { get; private set; } = 512;
-
-		public string FilePath { get; private set; }
-
-		public string ReadValue(string section, string key, string filePath, string defaultValue = "")
+		public string ReadValue(string section, string key,  string defaultValue = "")
 		{
 			int capacity = Capacity;
 			var value = new StringBuilder(capacity);
-			GetPrivateProfileString(section, key, defaultValue, value, value.Capacity, filePath);
+			GetPrivateProfileString(section, key, defaultValue, value, value.Capacity, FilePath);
 			return value.ToString();
 		}
 
-		public string[] ReadSections(string filePath)
+		public string[] ReadSections()
 		{
 			int capacity = Capacity;
 			while (true)
 			{
 				char[] chars = new char[capacity];
-				int size = GetPrivateProfileString(null, null, "", chars, capacity, filePath);
+				int size = GetPrivateProfileString(null, null, "", chars, capacity, FilePath);
 
 				if (size == 0)
 				{
@@ -131,14 +113,14 @@ namespace CornucopiaV2
 			}
 		}
 
-		public string[] ReadKeys(string section, string filePath)
+		public string[] ReadKeys(string section)
 		{
 			int capacity = Capacity;
 			// first line will not recognize if ini file is saved in UTF-8 with BOM 
 			while (true)
 			{
 				char[] chars = new char[capacity];
-				int size = GetPrivateProfileString(section, null, "", chars, capacity, filePath);
+				int size = GetPrivateProfileString(section, null, "", chars, capacity, FilePath);
 
 				if (size == 0)
 				{
@@ -152,17 +134,17 @@ namespace CornucopiaV2
 					return keys;
 				}
 
-				capacity = capacity * 2;
+				capacity *= 2;
 			}
 		}
 
-		public string[] ReadKeyValuePairs(string section, string filePath)
+		public string[] ReadKeyValuePairs(string section)
 		{
 			int capacity = Capacity;
 			while (true)
 			{
 				IntPtr returnedString = Marshal.AllocCoTaskMem(capacity * sizeof(char));
-				int size = GetPrivateProfileSection(section, returnedString, capacity, filePath);
+				int size = GetPrivateProfileSection(section, returnedString, capacity, FilePath);
 
 				if (size == 0)
 				{
@@ -179,26 +161,27 @@ namespace CornucopiaV2
 				}
 
 				Marshal.FreeCoTaskMem(returnedString);
-				capacity = capacity * 2;
+				capacity *= 2;
 			}
 		}
 
-		public bool WriteValue(string section, string key, string value, string filePath)
+		public bool WriteValue(string section, string key, string value)
 		{
-			bool result = WritePrivateProfileString(section, key, value, filePath);
+			bool result = WritePrivateProfileString(section, key, value, FilePath);
 			return result;
 		}
 
-		public bool DeleteSection(string section, string filepath)
+		public bool DeleteSection(string section)
 		{
-			bool result = WritePrivateProfileString(section, null, null, filepath);
+			bool result = WritePrivateProfileString(section, null, null, FilePath);
 			return result;
 		}
 
-		public bool DeleteKey(string section, string key, string filepath)
+		public bool DeleteKey(string section, string key)
 		{
-			bool result = WritePrivateProfileString(section, key, null, filepath);
+			bool result = WritePrivateProfileString(section, key, null, FilePath);
 			return result;
 		}
+
 	}
 }
