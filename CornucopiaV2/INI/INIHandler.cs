@@ -19,7 +19,7 @@ namespace CornucopiaV2
 			;
 
 		[DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
-		static extern int GetPrivateProfileString
+		private static extern int GetPrivateProfileString
 			(string section
 			, string key
 			, string defaultValue
@@ -61,7 +61,7 @@ namespace CornucopiaV2
 			FilePath = filePath;
 		}
 
-		public bool WritePrivateProfileString
+		public bool WriteValue
 			(string section
 			, string key
 			, string value
@@ -78,11 +78,23 @@ namespace CornucopiaV2
 					;
 		}
 
-		public string ReadValue(string section, string key,  string defaultValue = "")
+		public string ReadValue
+			(string section
+			, string key
+			,  string defaultValue = ""
+			)
 		{
 			int capacity = Capacity;
-			var value = new StringBuilder(capacity);
-			GetPrivateProfileString(section, key, defaultValue, value, value.Capacity, FilePath);
+			StringBuilder value = new StringBuilder(capacity);
+			GetPrivateProfileString
+				(section
+				, key
+				, defaultValue
+				, value
+				, value.Capacity
+				, FilePath
+				)
+				;
 			return value.ToString();
 		}
 
@@ -162,22 +174,14 @@ namespace CornucopiaV2
 			}
 		}
 
-		public bool WriteValue(string section, string key, string value)
-		{
-			bool result = WritePrivateProfileString(section, key, value, FilePath);
-			return result;
-		}
-
 		public bool DeleteSection(string section)
 		{
-			bool result = WritePrivateProfileString(section, null, null, FilePath);
-			return result;
+			return WritePrivateProfileString(section, null, null, FilePath);
 		}
 
 		public bool DeleteKey(string section, string key)
 		{
-			bool result = WritePrivateProfileString(section, key, null, FilePath);
-			return result;
+			return WritePrivateProfileString(section, key, null, FilePath);
 		}
 
 	}
