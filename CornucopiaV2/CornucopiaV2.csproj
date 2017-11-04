@@ -75,6 +75,7 @@
     <Compile Include="Extenders\IEnumerableExtenders.cs" />
     <Compile Include="Extenders\IntExtenders.cs" />
     <Compile Include="File\CorFile.cs" />
+    <Compile Include="ImageHelper\ImageExt.cs" />
     <Compile Include="INI\INIHandler.cs" />
     <Compile Include="M\Maths.cs" />
     <Compile Include="Navigation\A.cs" />

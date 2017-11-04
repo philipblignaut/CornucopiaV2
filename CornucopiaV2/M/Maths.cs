@@ -51,6 +51,13 @@ namespace CornucopiaV2
 			return Math.Atan(angleRadians);
 		}
 
+		public static float Abs
+			(this float angleRadians
+			)
+		{
+			return Math.Abs(angleRadians);
+		}
+
 		public static float SinF
 			(this float angleRadians
 			)

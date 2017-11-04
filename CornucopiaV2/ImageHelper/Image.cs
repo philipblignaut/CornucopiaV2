@@ -10,9 +10,12 @@ using System.Drawing.Drawing2D;
 namespace CornucopiaV2
 {
 	public class CorImage
+		: IDisposable
 	{
+#pragma warning disable RCNoAssignment // No assignment to a get-only auto-property.
 		public int Width { get => Bitmap.Width; }
 		public int Height { get => Bitmap.Height; }
+#pragma warning restore RCNoAssignment // No assignment to a get-only auto-property.
 		public Bitmap Bitmap { get; private set; }
 		public Graphics Graphics { get; private set; }
 		public bool Disposed { get; private set; }
@@ -66,6 +69,28 @@ namespace CornucopiaV2
 				)
 				;
 		}
+
+		public void DrawLine
+			(Color color
+			, float linewidth
+			, double xfrom
+			, double yfrom
+			, double xto
+			, double yto
+			)
+
+		{
+			DrawLine
+				(color
+				, linewidth
+				, (float)xfrom
+				, (float)yfrom
+				, (float)xto
+				, (float)yto
+				)
+				;
+		}
+
 		public void DrawLine
 			(Color color
 			, float linewidth
@@ -149,6 +174,30 @@ namespace CornucopiaV2
                 ;
         }
 
+		public void DrawCircle
+			(PointF centre
+			, float radius
+			, float lineWidth
+			, Color color
+			)
+		{
+			Graphics
+				.DrawEllipse
+				(new Pen(color, lineWidth)
+				, new RectangleF
+					(new PointF
+						(centre.X - radius
+						, centre.Y - radius
+						)
+					, new SizeF
+						(radius * 2
+						, radius * 2
+						)
+					)
+				)
+				;
+		}
+
         public void DrawArc
             (Color color
             , float arclinewidth
@@ -215,20 +264,15 @@ namespace CornucopiaV2
             Bitmap.Save(path, imageFormat);
         }
 
-        public void Dispose()
-        {
-            if (!Disposed)
-            {
-                Graphics.Dispose();
-                Bitmap.Dispose();
-                Disposed = true;
-            }
-        }
+		public void Dispose()
+		{
+			if (!Disposed)
+			{
+				Graphics.Dispose();
+				Bitmap.Dispose();
+				Disposed = true;
+			}
+		}
 
-        ~CorImage()
-        {
-            Dispose();
-        }
-
-    }
+	}
 }

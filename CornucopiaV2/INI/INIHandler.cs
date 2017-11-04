@@ -43,6 +43,24 @@ namespace CornucopiaV2
 			)
 			;
 
+		public int GetPrivateProfileSection
+			(string section
+			, IntPtr keyValue
+			, int size
+			)
+
+		{
+			return
+				INIHandler
+				.GetPrivateProfileSection
+				(section
+				, keyValue
+				, size
+				, FilePath
+				)
+				;
+		}
+
 		[DllImport("kernel32", CharSet = CharSet.Unicode, SetLastError = true)]
 		[return: MarshalAs(UnmanagedType.Bool)]
 		private static extern bool WritePrivateProfileString
@@ -52,6 +70,30 @@ namespace CornucopiaV2
 			, string filePath
 			)
 			;
+
+		public bool WritePrivateProfileString
+			(string section
+			, string key
+			, string value
+			)
+		{
+			return
+				INIHandler
+					.WritePrivateProfileString
+					(section
+					, key
+					, value
+					, FilePath
+					)
+					;
+		}
+
+		/// <summary>Record Constructor</summary>
+		/// <param name="filePath"><see cref="FilePath"/></param>
+		public INIHandler(string filePath)
+		{
+			FilePath = filePath;
+		}
 
 		public int Capacity { get; private set; } = 512;
 
@@ -158,6 +200,5 @@ namespace CornucopiaV2
 			bool result = WritePrivateProfileString(section, key, null, filepath);
 			return result;
 		}
-
 	}
 }
