@@ -29,15 +29,12 @@ namespace CornucopiaV2
 		}
 		public PosVector
 			(float x
-			,float y
-			, float angleRadians
+			, float y
 			, float length
+			, float angleRadians
 			)
+			: this(new PointF(x, y), length, angleRadians)
 		{
-			Start = new PointF(x, y);
-			Length = length;
-			AngleRadians = angleRadians;
-			End = new PointF();
 		}
 
 		private PointF CalculateEnd()
@@ -45,7 +42,7 @@ namespace CornucopiaV2
 			return
 				new PointF
 				(Start.X + Length * AngleRadians.CosF()
-				, Start.Y + Length *AngleRadians.SinF()
+				, Start.Y + Length * AngleRadians.SinF()
 				)
 				;
 		}
