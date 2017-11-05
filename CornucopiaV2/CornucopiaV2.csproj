@@ -102,10 +102,11 @@
     <Compile Include="Navigation\QuadrantExtender.cs" />
     <Compile Include="Navigation\StartAngleAttribute.cs" />
     <Compile Include="Navigation\SweepAngleAttribute.cs" />
-    <Compile Include="Navigation\XffsetAttribute.cs" />
+    <Compile Include="Navigation\XOffsetAttribute.cs" />
     <Compile Include="Navigation\XIncrementAttribute.cs" />
     <Compile Include="Navigation\YIncrementAttribute.cs" />
     <Compile Include="Navigation\YOffsetAttribute.cs" />
+    <Compile Include="NumberExtenders\Range.cs" />
     <Compile Include="RandomExtenders\RandomExtenders.cs" />
     <Compile Include="SegmentExt\Segment.cs" />
     <Compile Include="SegmentExt\Segments.cs" />

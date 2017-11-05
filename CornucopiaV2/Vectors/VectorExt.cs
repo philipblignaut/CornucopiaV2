@@ -22,7 +22,6 @@ namespace CornucopiaV2
 			(this Vector2 vector
 			)
 		{
-			vector.Length();
 			return new PointF(vector.X, vector.Y);
 		}
 
@@ -109,21 +108,5 @@ namespace CornucopiaV2
 			return Vector2.Transform(position, matrix);
 		}
 
-		public static Vector2 AlterDirectionDegrees
-			(this Vector2 vector
-			, double angleDegrees
-			)
-		{
-			Vector2 vector2 = new Vector2((int)vector.X, (int)vector.Y);
-			double angleRadians = angleDegrees.ToRadians();
-			double angle =
-				Math
-				.Atan2
-				(angleRadians.Cos()
-				, angleRadians.Sin()
-				)
-				;
-			return new Vector2((float)angle.Cos(), (float)angle.Sin());
-		}
 	}
 }

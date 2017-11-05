@@ -19,8 +19,8 @@ namespace CornucopiaV2
 			List<Segment> segmentList = new List<Segment>();
 			if (isAngleDegrees)
 			{
-				start = start.ToCompassDegrees();
-				end = end.ToCompassDegrees();
+				start = start.FixDegrees0T360();
+				end = end.FixDegrees0T360();
 				if (start > end)
 				{
 					double temp = start;
