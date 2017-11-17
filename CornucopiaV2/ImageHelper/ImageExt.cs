@@ -22,18 +22,26 @@ namespace CornucopiaV2
 			image.Graphics.TranslateTransform(image.Width / 2, -image.Height / 2);
 		}
 
+		public static void BottomCartesian
+			(this CorImage image
+			)
+		{
+			image.Graphics.ScaleTransform(1.0F, -1.0F);
+			image.Graphics.TranslateTransform(image.Width / 2, -image.Height);
+		}
+
 		public static RectangleF CircleBounds
 			(this PointF centre
 			, float radius
 			)
 		{
-			return 
+			return
 				new RectangleF
 					(new PointF
 						(centre.X - radius / 2
 						, centre.Y - radius / 2
 						)
-					, new SizeF(radius, radius)
+					, new SizeF(radius * 2, radius * 2)
 					)
 					;
 		}

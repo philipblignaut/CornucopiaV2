@@ -52,10 +52,17 @@ namespace CornucopiaV2
 		}
 
 		public static float Abs
-			(this float angleRadians
+			(this float value
 			)
 		{
-			return Math.Abs(angleRadians);
+			return Math.Abs(value);
+		}
+
+		public static float SqrtF
+			(this float value
+			)
+		{
+			return (float)Math.Sqrt(value);
 		}
 
 		public static float SinF

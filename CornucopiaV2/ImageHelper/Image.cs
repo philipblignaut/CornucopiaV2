@@ -120,26 +120,53 @@ namespace CornucopiaV2
 		}
 
 		public void DrawString
-            (string text
-            , string fontFamilyName
+			(string text
+			, string fontFamilyName
 			, float fontSize
-            , Color color
-            , float x
-            , float y
-            )
-        {
+			, Color color
+			, PointF point
+			, PointF min
+			, PointF max
+			)
+		{
+			Font font = new Font(new FontFamily(fontFamilyName), fontSize);
+			point.X = point.X < min.X ? min.X : point.X;
+			point.Y = point.Y < min.Y ? min.Y : point.Y;
+			SizeF size = Graphics.MeasureString(text, font);
+			point.X = point.X > max.X - size.Width ? max.X - size.Width : point.X;
+			point.Y = point.Y > max.Y - size.Height ? max.Y - size.Height : point.Y;
 			Graphics
 				.DrawString
-                (text
-                , new Font(new FontFamily(fontFamilyName), fontSize)
-                , new SolidBrush(color)
-                , x
-                , y
-                )
-            ;
-        }
+				(text
+				, font
+				, new SolidBrush(color)
+				, point
+				)
+			;
+		}
 
-        public void DrawStringInBoxCentreMiddle
+		public void DrawString
+			(string text
+			, string fontFamilyName
+			, float fontSize
+			, Color color
+			, float x
+			, float y
+			, PointF min
+			, PointF max
+			) =>
+			DrawString
+				(text
+				, fontFamilyName
+				, fontSize
+				, color
+				, new PointF(x, y)
+				, min
+				, max
+				)
+			;
+
+		public void DrawStringInBoxCentreMiddle
             (string text
             , string fontFamily
             , float initailFontSize
@@ -226,16 +253,9 @@ namespace CornucopiaV2
             , float sweepangle
             )
         {
-            width = Math.Abs(width);
-            height = Math.Abs(height);
-            if (width == 0)
-            {
-                width = 1;
-            }
-            if (height == 0)
-            {
-                height = 1;
-            }
+			width = width < 1 ? 1 : width;
+			height = height < 1 ? 1 : height;
+			arclinewidth = arclinewidth < 1 ? 1 : arclinewidth;
             Graphics
                 .DrawArc
                 (new
@@ -271,7 +291,7 @@ namespace CornucopiaV2
                 )
                 ;
         }
-        public void SetPixel(Color color, int x, int y)
+		public void SetPixel(int x, int y, Color color)
         {
             Bitmap.SetPixel(x, y, color);
         }

@@ -26,20 +26,21 @@ namespace CornucopiaV2
 			{
 				ConDebPrintDelegate.Invoke(line);
 			}
+		}
 
-		}
-		public static void Print
-			(string format
-			, params object[] args
-			)
-		{
-			Print(format.FormatWith(args));
-		}
-		public static void Print
-			(params object[] args
-			)
-		{
-			Print(args.JoinToCharacterSeparatedValues(C.sp));
-		}
+		//public static void Print
+		//	(string format
+		//	, params object[] args
+		//	)
+		//{
+		//	Print(format.FormatWith(args));
+		//}
+		//public static void Print
+		//	(params object[] args
+		//	)
+		//{
+		//	Print(args.JoinToCharacterSeparatedValues(C.sp));
+		//}
+
 	}
 }

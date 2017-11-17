@@ -98,6 +98,89 @@ namespace CornucopiaV2
 			return value.ToString();
 		}
 
+		public string Section { get; set; }
+
+		public int GetInt
+			(string key
+			, string defaultValue = "0"
+			) =>
+			int
+				.Parse
+				(ReadValue
+					(Section
+					, key
+					, defaultValue
+					)
+				)
+				;
+
+		public long GetLong
+			(string key
+			, string defaultValue = "0"
+			) =>
+			long
+				.Parse
+				(ReadValue
+					(Section
+					, key
+					, defaultValue
+					)
+				)
+				;
+
+		public float GetFloat
+			(string key
+			, string defaultValue = "0"
+			) =>
+			float
+				.Parse
+				(ReadValue
+					(Section
+					, key
+					, defaultValue
+					)
+				)
+				;
+
+		public double GetDouble
+			(string key
+			, string defaultValue = "0"
+			) =>
+			double
+				.Parse
+				(ReadValue
+					(Section
+					, key
+					, defaultValue
+					)
+				)
+				;
+
+		public decimal GetDecimal
+			(string key
+			, string defaultValue = "0"
+			) =>
+			decimal
+				.Parse
+				(ReadValue
+					(Section
+					, key
+					, defaultValue
+					)
+				)
+				;
+
+		public string GetString
+			(string key
+			, string defaultValue = "0"
+			) =>
+				ReadValue
+					(Section
+					, key
+					, defaultValue
+					)
+				;
+
 		public string[] ReadSections()
 		{
 			int capacity = Capacity;

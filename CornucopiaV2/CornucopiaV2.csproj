@@ -67,6 +67,7 @@
     <Compile Include="CachedDictionaryV2\StringEqualityComparer.cs" />
     <Compile Include="ColorExtenders\ColorGradientFactory.cs" />
     <Compile Include="ColorExtenders\ColorWheel.cs" />
+    <Compile Include="ComplexExtenders\ComplexExt.cs" />
     <Compile Include="ConDeb\ConDeb.cs" />
     <Compile Include="Converters\Converter.cs" />
     <Compile Include="CSVReader\CSVReader.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Extenders\IntExtenders.cs" />
     <Compile Include="File\CorFile.cs" />
     <Compile Include="ImageHelper\ImageExt.cs" />
+    <Compile Include="ImageHelper\ImageOrigin.cs" />
     <Compile Include="INI\INIHandler.cs" />
     <Compile Include="M\Maths.cs" />
     <Compile Include="Navigation\A.cs" />
@@ -100,12 +102,14 @@
     <Compile Include="Navigation\PolarD.cs" />
     <Compile Include="Navigation\Quadrant.cs" />
     <Compile Include="Navigation\QuadrantExtender.cs" />
+    <Compile Include="Navigation\SizeFExt.cs" />
     <Compile Include="Navigation\StartAngleAttribute.cs" />
     <Compile Include="Navigation\SweepAngleAttribute.cs" />
     <Compile Include="Navigation\XOffsetAttribute.cs" />
     <Compile Include="Navigation\XIncrementAttribute.cs" />
     <Compile Include="Navigation\YIncrementAttribute.cs" />
     <Compile Include="Navigation\YOffsetAttribute.cs" />
+    <Compile Include="NumberExtenders\NumberRangeTranslator.cs" />
     <Compile Include="NumberExtenders\Range.cs" />
     <Compile Include="RandomExtenders\RandomExtenders.cs" />
     <Compile Include="SegmentExt\Segment.cs" />
@@ -140,6 +144,8 @@
     <Compile Include="ThreadExtenders\TypedFuncArgumentPair.cs" />
     <Compile Include="TimeSpanExtenders\TimeSpanExt.cs" />
     <Compile Include="Transcform\TransformExt.cs" />
+    <Compile Include="Vectors\DrawingVector.cs" />
+    <Compile Include="Vectors\DrawingVectorExt.cs" />
     <Compile Include="Vectors\PosVector.cs" />
     <Compile Include="Vectors\VectorExt.cs" />
     <Compile Include="WebForm\KVPAction.cs" />

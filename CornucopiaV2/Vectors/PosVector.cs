@@ -10,10 +10,10 @@ namespace CornucopiaV2
 	public struct PosVector
 		: IEquatable<PosVector>
 	{
-		public PointF Start { get; private set; }
+		public PointF Start { get; internal set; }
 		public float AngleRadians { get; private set; }
 		public float AngleDegrees { get => AngleRadians.ToDegrees(); private set { } }
-		public float Length { get; private set; }
+		public float Length { get; set; }
 		public PointF End { get => CalculateEnd(); private set { } }
 
 		public PosVector
@@ -54,6 +54,11 @@ namespace CornucopiaV2
 			AngleRadians += angleRadians;
 		}
 
+		/// <summary>
+		/// <para>Lenthen the length with factor > 1.</para>
+		/// <para>Shorten the length with factor < 1.</para>
+		/// </summary>
+		/// <param name="factor"></param>
 		public void StretchShrink
 			(float factor
 			)
@@ -61,9 +66,20 @@ namespace CornucopiaV2
 			Length *= factor;
 		}
 
+		public void LengthenShorten
+			(float distance
+			)
+		{
+			Length += distance;
+		}
+
 		public override string ToString()
 		{
-			return $"s {Start} l {Length} ad {AngleDegrees}";
+			return $"s {Start.ToFormatString()}"
+				+ $@" len {Length,8:###.000}"
+				+ $@" a {AngleDegrees,7:###.00}"
+				+ $@" e {End.ToFormatString()}"
+				;
 		}
 
 		public override int GetHashCode()
@@ -105,5 +121,31 @@ namespace CornucopiaV2
 			) => !left.Equals(right)
 			;
 
+		public PosVector Abs()
+			=>
+			new PosVector
+				(new PointF
+					(Start.X.Abs()
+					, Start.Y.Abs()
+					)
+				, Length
+				, AngleRadians
+				)
+			;
+
+		//public static PosVector Add
+		//	(PosVector left
+		//	,PosVector right
+		//	)
+		//	=>
+		//	new PosVector
+		//		(new PointF
+		//			(left.Start.X
+		//			+right.Start.Y
+		//			)
+		//		, 
+		//		)
+
 	}
+
 }

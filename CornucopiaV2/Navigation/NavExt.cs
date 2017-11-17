@@ -92,7 +92,7 @@ namespace CornucopiaV2
 
 		private static void CatchLine(string line)
 		{
-			cImage.DrawString(line, "Consolas", 7, Color.Black, 150, row);
+			cImage.DrawString(line, "Consolas", 7, Color.Black, 150, row, new PointF(-cImage.Width / 2, -cImage.Height / 2), new PointF(cImage.Width / 2, cImage.Height / 2));
 			row += 10;
 		}
 

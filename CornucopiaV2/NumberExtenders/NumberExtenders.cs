@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace CornucopiaV2
 {
-	public static class NumberExtenders
+	public static class NumberExtenders2
 	{
 
 		//public static bool IsPrime
