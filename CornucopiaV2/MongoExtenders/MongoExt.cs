@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-//using MongoDB.Driver;
+﻿//using MongoDB.Driver;
 
 namespace CornucopiaV2
 {
-/*	static public class MongoExt
-	{
-		static public List<T> ToList<T>
-			(this IMongoCollection<T> collection
-			)
+	/*	static public class MongoExt
 		{
-			return
+			static public List<T> ToList<T>
+				(this IMongoCollection<T> collection
+				)
+			{
+				return
+					collection
+					.Find(entity => true)
+					.ToList()
+					;
+			}
+			static public void Each<T>
+				(this IMongoCollection<T> collection
+				, Action<T> predicate
+				)
+			{
 				collection
-				.Find(entity => true)
-				.ToList()
-				;
-		}
-		static public void Each<T>
-			(this IMongoCollection<T> collection
-			, Action<T> predicate
-			)
-		{
-			collection
-				.ToList()
-				.Each(entity => predicate.Invoke(entity))
-				;
+					.ToList()
+					.Each(entity => predicate.Invoke(entity))
+					;
 
+			}
 		}
-	}
-    */
+		*/
 }

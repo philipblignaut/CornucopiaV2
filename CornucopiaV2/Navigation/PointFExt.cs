@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
@@ -17,7 +12,7 @@ namespace CornucopiaV2
 		{
 			double x = Math.Round(point.X, 2);
 			double y = Math.Round(point.Y, 2);
-			return $@"{{X={x,9:##0.00}}} {{Y={y,9:##0.00}}}";
+			return $"{{X={x,9:##0.00}}} {{Y={y,9:##0.00}}}";
 		}
 
 		public static double DistanceTo

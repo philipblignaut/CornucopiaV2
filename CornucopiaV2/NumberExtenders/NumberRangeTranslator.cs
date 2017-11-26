@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CornucopiaV2
+﻿namespace CornucopiaV2
 {
 	public class NumberRangeTranslator
 	{
 
 		// NewValue = (((OldValue - OldMin) * NewRange) / OldRange) + NewMin
+
+			/// <summary>
+			/// cfv iuoigouyg yguiouu iuyoiuypo
+			/// </summary>
 		public double OldMin { get; private set; }
 		public double OldMax { get; private set; }
 		public double NewMin { get; private set; }
 		public double NewMax { get; private set; }
 		/// <summary>Record Constructor</summary>
-		/// <param name="oldMin"><see cref="OldMin"/></param>
+		/// <param name="oldMin">xxxxxx cfv iuoigouyg yguiouu iuyoiuypo<see cref="OldMin"/></param>
 		/// <param name="oldMax"><see cref="OldMax"/></param>
 		/// <param name="newMin"><see cref="NewMin"/></param>
 		/// <param name="newMax"><see cref="NewMax"/></param>

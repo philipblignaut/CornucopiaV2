@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CornucopiaV2
 {
-   public struct FloatSegment
+	public struct FloatSegment
    {
       public float Start { get; private set; }
       public float End { get; private set; }

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
 
 namespace CornucopiaV2
 {
-   public static class DateTimeExtenders
+	public static class DateTimeExtenders
    {
       public static DateTime FirstDayInMonth
          (this DateTime dateTime

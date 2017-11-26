@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Drawing;
-using System.Diagnostics;
 
 namespace CornucopiaV2
 {
-    public static class ColorExtenders
+	public static class ColorExtenders
     {
         public static string ToHTML
            (this Color color

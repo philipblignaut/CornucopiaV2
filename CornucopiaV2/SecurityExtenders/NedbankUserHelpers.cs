@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Security.Principal;
 
 namespace CornucopiaV2
 {
-   public enum UserStaffMemberResultType
+	public enum UserStaffMemberResultType
    {
       [EnumLongDescription("Is Staff Member")]
       IsStaffMember = 1,

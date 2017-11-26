@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace CornucopiaV2
 {
-   public static class XmlSerializeDeserialize
+	public static class XmlSerializeDeserialize
    {
       public static string XmlSerialize<T>
          (this T obj

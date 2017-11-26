@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
@@ -11,134 +8,83 @@ namespace CornucopiaV2
 
 		public static double Sign
 			(this double d
-			)
-		{
-			return d == 0 ? 0 : d > 0 ? 1 : -1;
-		}
+			) => d == 0 ? 0 : d > 0 ? 1 : -1;
 
 		public static double Sqrt
 			(this double d
-			)
-		{
-			return Math.Sqrt(d);
-		}
+			) => Math.Sqrt(d);
 
 		public static double Abs
 			(this double d
-			)
-		{
-			return Math.Abs(d);
-		}
+			) => Math.Abs(d);
 
 		public static double Asin
 			(this double angleRadians
-			)
-		{
-			return Math.Asin(angleRadians);
-		}
+			) => Math.Asin(angleRadians);
 
 		public static double Acos
 			(this double angleRadians
-			)
-		{
-			return Math.Acos(angleRadians);
-		}
+			) => Math.Acos(angleRadians);
 
 		public static double Atan
 			(this double angleRadians
-			)
-		{
-			return Math.Atan(angleRadians);
-		}
+			) => Math.Atan(angleRadians);
 
 		public static float Abs
 			(this float value
-			)
-		{
-			return Math.Abs(value);
-		}
+			) => Math.Abs(value);
 
 		public static float SqrtF
 			(this float value
-			)
-		{
-			return (float)Math.Sqrt(value);
-		}
+			) => (float)Math.Sqrt(value);
 
 		public static float SinF
 			(this float angleRadians
-			)
-		{
-			return (float)Math.Sin(angleRadians);
-		}
+			) => (float)Math.Sin(angleRadians);
 
 		public static float CosF
 			(this float angleRadians
-			)
-		{
-			return (float)Math.Cos(angleRadians);
-		}
+			) => (float)Math.Cos(angleRadians);
 
 		public static float TanF
 			(this float angleRadians
-			)
-		{
-			return (float)Math.Tan(angleRadians);
-		}
+			) => (float)Math.Tan(angleRadians);
 
 		public static double Sin
 			(this double angleRadians
-			)
-		{
-			return Math.Sin(angleRadians);
-		}
+			) => Math.Sin(angleRadians);
 
 		public static double Cos
 			(this double angleRadians
-			)
-		{
-			return Math.Cos(angleRadians);
-		}
+			) => Math.Cos(angleRadians);
 
 		public static double Tan
 			(this double angleRadians
-			)
-		{
-			return Math.Tan(angleRadians);
-		}
+			) => Math.Tan(angleRadians);
 
 		public static double SinD
 			(this double angleDegrees
-			)
-		{
-			return Math.Sin(angleDegrees.ToRadians());
-		}
+			) => Math.Sin(angleDegrees.ToRadians());
 
 		public static double CosD
 			(this double angleDegrees
-			)
-		{
-			return Math.Cos(angleDegrees.ToRadians());
-		}
+			) => Math.Cos(angleDegrees.ToRadians());
 
 		public static double TanD
 			(this double angleDegrees
-			)
-		{
-			return Math.Tan(angleDegrees.ToRadians());
-		}
+			) => Math.Tan(angleDegrees.ToRadians());
+
+		public static double Round
+			(this double value
+			, int digits
+			) => Math.Round(value, digits);
 
 		public static float Range
 			(params float[] args
-			)
-		{
-			float result = -1F;
-			if (args.Length >= 2)
-			{
-				result = args.Max() - args.Min();
-			}
-			return result;
-		}
+			) => (args.Length >= 2)
+			? args.Max() - args.Min()
+			: -1F
+			;
 
 	}
 }

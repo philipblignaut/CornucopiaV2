@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
@@ -227,7 +225,10 @@ namespace CornucopiaV2
 		{
 			Graphics
 				.DrawEllipse
-				(new Pen(color, lineWidth)
+				(new Pen
+					(color
+					, lineWidth < 0.5F ? 0.5F : lineWidth
+					)
 				, new RectangleF
 					(new PointF
 						(centre.X - radius
@@ -255,14 +256,13 @@ namespace CornucopiaV2
         {
 			width = width < 1 ? 1 : width;
 			height = height < 1 ? 1 : height;
-			arclinewidth = arclinewidth < 1 ? 1 : arclinewidth;
             Graphics
                 .DrawArc
                 (new
                     Pen
                     (color
-                    , arclinewidth
-                    )
+                    , arclinewidth < 0.5F ? 0.5F : arclinewidth
+					)
                 , x
                 , y
                 , width
@@ -291,6 +291,7 @@ namespace CornucopiaV2
                 )
                 ;
         }
+
 		public void SetPixel(int x, int y, Color color)
         {
             Bitmap.SetPixel(x, y, color);

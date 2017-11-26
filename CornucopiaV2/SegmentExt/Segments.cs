@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
-	public class Segments
+	public static class Segments
 	{
-		public SegmentsBetween SegmentsBetween
+
+		public static SegmentsBetween SegmentsBetween
 			(double start
 			, double end
 			, double segmentLength

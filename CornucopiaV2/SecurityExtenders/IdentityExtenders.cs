@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 
 namespace CornucopiaV2
 {
-   public static class SecurityExtenders
+	public static class SecurityExtenders
    {
       /// <summary>
       /// Casts an IIdentity object, like

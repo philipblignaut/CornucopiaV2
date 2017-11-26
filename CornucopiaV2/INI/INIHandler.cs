@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Drawing;
+using System.Collections.Generic;
 
 namespace CornucopiaV2
 {
 	public class INIHandler
 	{
+
+		public string Section { get; set; }
 
 		[DllImport("kernel32", CharSet = CharSet.Unicode)]
 		private static extern int GetPrivateProfileString
@@ -56,21 +60,30 @@ namespace CornucopiaV2
 
 		/// <summary>Record Constructor</summary>
 		/// <param name="filePath"><see cref="FilePath"/></param>
-		public INIHandler(string filePath)
+		public INIHandler
+			(string filePath
+			)
 		{
 			FilePath = filePath;
 		}
 
+		public INIHandler
+			(string filePath
+			, string section
+			)
+		{
+			FilePath = filePath;
+			Section = section;
+		}
+
 		public bool WriteValue
-			(string section
-			, string key
+			(string key
 			, string value
 			)
 		{
 			return
-				INIHandler
-					.WritePrivateProfileString
-					(section
+				WritePrivateProfileString
+					(Section
 					, key
 					, value
 					, FilePath
@@ -81,7 +94,7 @@ namespace CornucopiaV2
 		public string ReadValue
 			(string section
 			, string key
-			,  string defaultValue = ""
+			, string defaultValue = ""
 			)
 		{
 			int capacity = Capacity;
@@ -98,81 +111,152 @@ namespace CornucopiaV2
 			return value.ToString();
 		}
 
-		public string Section { get; set; }
-
-		public int GetInt
-			(string key
-			, string defaultValue = "0"
-			) =>
-			int
+		public int GInt
+			(string sectionKey
+			, int defaultValue = 0
+			)
+		{
+			string section = C.es;
+			string key = C.es;
+			SplitSectionKey(sectionKey, out section, out key);
+			return
+				int
 				.Parse
 				(ReadValue
-					(Section
+					(section
 					, key
-					, defaultValue
+					, defaultValue.ToString()
 					)
 				)
 				;
+		}
 
-		public long GetLong
-			(string key
-			, string defaultValue = "0"
-			) =>
-			long
+		public bool WInt
+			(string sectionKey
+			, int value
+			)
+		{
+			string section = C.es;
+			string key = C.es;
+			SplitSectionKey(sectionKey, out section, out key);
+			return
+				WritePrivateProfileString
+				(section
+				, key
+				, value.ToString()
+				, FilePath
+				)
+				;
+		}
+
+		public long GLong
+			(string sectionKey
+			, long defaultValue = 0L
+			)
+		{
+			string section = C.es;
+			string key = C.es;
+			SplitSectionKey(sectionKey, out section, out key);
+			return
+				long
 				.Parse
 				(ReadValue
-					(Section
+					(section
 					, key
-					, defaultValue
+					, defaultValue.ToString()
 					)
 				)
 				;
+		}
 
-		public float GetFloat
-			(string key
-			, string defaultValue = "0"
-			) =>
-			float
-				.Parse
-				(ReadValue
-					(Section
-					, key
-					, defaultValue
-					)
+		public bool WLong
+			(string sectionKey
+			, long value
+			)
+		{
+			string section = C.es;
+			string key = C.es;
+			SplitSectionKey(sectionKey, out section, out key);
+			return
+				WritePrivateProfileString
+				(section
+				, key
+				, value.ToString()
+				, FilePath
 				)
 				;
+		}
 
-		public double GetDouble
+		public float GFloat
+			(string sectionKey
+			, float defaultValue = 0F
+			)
+		{
+			SplitSectionKey
+				(sectionKey
+				, out string section
+				, out string key
+				)
+				;
+			return
+				float
+					.Parse
+					(ReadValue
+						(section
+						, key
+						, defaultValue.ToString()
+						)
+					)
+					;
+		}
+
+		public bool WFloat
+			(string sectionKey
+			, float value
+			)
+		{
+			SplitSectionKey(sectionKey, out string section, out string key);
+			return
+				WritePrivateProfileString
+				(section
+				, key
+				, value.ToString()
+				, FilePath
+				)
+				;
+		}
+
+		public double GDouble
 			(string key
-			, string defaultValue = "0"
+			, double defaultValue = 0D
 			) =>
 			double
 				.Parse
 				(ReadValue
 					(Section
 					, key
-					, defaultValue
+					, defaultValue.ToString()
 					)
 				)
 				;
 
-		public decimal GetDecimal
+		public decimal GDecimal
 			(string key
-			, string defaultValue = "0"
+			, decimal defaultValue = 0M
 			) =>
 			decimal
 				.Parse
 				(ReadValue
 					(Section
 					, key
-					, defaultValue
+					, defaultValue.ToString()
 					)
 				)
 				;
 
-		public string GetString
+		public string GString
 			(string key
-			, string defaultValue = "0"
+			, string defaultValue = ""
 			) =>
 				ReadValue
 					(Section
@@ -180,6 +264,42 @@ namespace CornucopiaV2
 					, defaultValue
 					)
 				;
+
+		public Color GColor
+			(string sectionKey
+			, string defaultValueFromName = "ff000000"
+			)
+		{
+			SplitSectionKey(sectionKey, out string section, out string key);
+			return
+				Color
+				.FromName
+				(ReadValue
+					(section
+					, key
+					, defaultValueFromName
+					)
+				)
+				;
+		}
+
+		public bool WColor
+			(string sectionKey
+			, Color color
+			)
+		{
+			string section = C.es;
+			string key = C.es;
+			SplitSectionKey(sectionKey, out section, out key);
+			return
+				WritePrivateProfileString
+				(section
+				, key
+				, color.Name
+				, FilePath
+				)
+				;
+		}
 
 		public string[] ReadSections()
 		{
@@ -218,26 +338,25 @@ namespace CornucopiaV2
 				{
 					return null;
 				}
-
 				if (size < capacity - 2)
 				{
 					string result = new String(chars, 0, size);
 					string[] keys = result.Split(new char[] { '\0' }, StringSplitOptions.RemoveEmptyEntries);
 					return keys;
 				}
-
 				capacity *= 2;
 			}
 		}
 
-		public string[] ReadKeyValuePairs(string section)
+		public List< Tuple<string,string>>ReadKeyValuePairs
+			(string section
+			)
 		{
 			int capacity = Capacity;
 			while (true)
 			{
 				IntPtr returnedString = Marshal.AllocCoTaskMem(capacity * sizeof(char));
 				int size = GetPrivateProfileSection(section, returnedString, capacity, FilePath);
-
 				if (size == 0)
 				{
 					Marshal.FreeCoTaskMem(returnedString);
@@ -249,9 +368,23 @@ namespace CornucopiaV2
 					string result = Marshal.PtrToStringAuto(returnedString, size - 1);
 					Marshal.FreeCoTaskMem(returnedString);
 					string[] keyValuePairs = result.Split('\0');
-					return keyValuePairs;
+					List<Tuple<string, string>> tupleList = new List<Tuple<string, string>>();
+					foreach (string kvp in keyValuePairs)
+					{
+						string[] kvpx = kvp.Split("=", StringSplitOptions.RemoveEmptyEntries);
+						Tuple<string, string> tuple;
+						if (kvpx.Length>1)
+						{
+							tuple = new Tuple<string, string>(kvpx[0], kvpx[1]);
+						}
+						else
+						{
+							tuple = new Tuple<string, string>(kvpx[0], C.es);
+						}
+						tupleList.Add(tuple);
+					}
+					return tupleList;
 				}
-
 				Marshal.FreeCoTaskMem(returnedString);
 				capacity *= 2;
 			}
@@ -265,6 +398,25 @@ namespace CornucopiaV2
 		public bool DeleteKey(string section, string key)
 		{
 			return WritePrivateProfileString(section, key, null, FilePath);
+		}
+
+		private void SplitSectionKey
+			(string sectionKey
+			, out string section
+			, out string key
+			)
+		{
+			int pos;
+			if ((pos = sectionKey.IndexOf("\\")) > 0)
+			{
+				section = sectionKey.Substring(0, pos);
+				key = sectionKey.Substring(pos + 1);
+			}
+			else
+			{
+				section = Section;
+				key = sectionKey;
+			}
 		}
 
 	}

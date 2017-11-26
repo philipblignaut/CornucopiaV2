@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
 	public struct Segment
+		: IEquatable<Segment>
 	{
 		public int Index { get; internal set; }
 		public double Value { get; private set; }
@@ -19,44 +16,29 @@ namespace CornucopiaV2
 			Value = value;
 		}
 
-		public override string ToString()
-		{
-			return
-				"i " + Index.ToString()
-				+ " v " + Value.ToString()
-				;
-		}
+		public bool Equals(Segment other)
+			=> Index == other.Index
+			&& Value == other.Value
+			;
 
 		public override bool Equals(object obj)
-		{
-			Segment other = new Segment();
-			if (obj is Segment)
-			{
-				other = (Segment)obj;
-				return
-					Index == other.Index
-					&& Value == other.Value
-					;
-			}
-			return false;
-		}
-
-		public override int GetHashCode()
-		{
-			return
-				Index.GetHashCode()
-				| Value.GetHashCode()
-				;
-		}
+			=> obj is Segment other
+			&& Equals(other)
+			;
 
 		public static bool operator ==(Segment left, Segment right)
-		{
-			return left.Equals(right);
-		}
+			=> left.Equals(right);
 
 		public static bool operator !=(Segment left, Segment right)
-		{
-			return !(left == right);
-		}
+			=> !left.Equals(right);
+
+		public override int GetHashCode()
+			=> Index.GetHashCode()
+				& Value.GetHashCode()
+				;
+
+		public override string ToString()
+			=> $"i {Index} v {Value}";
+
 	}
 }

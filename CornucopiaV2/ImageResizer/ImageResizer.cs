@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Drawing;
 
 namespace CornucopiaV2
 {
-   public static class ImageResizer
+	public static class ImageResizer
    {
       /// <summary>
       /// Resizes Images to any other size keeping aspect ratio

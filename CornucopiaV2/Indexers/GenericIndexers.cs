@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CornucopiaV2
 {
-   public class Indexer<TKey, TResult>
+	public class Indexer<TKey, TResult>
    {
       private Func<TKey, TResult> func = null;
       public Indexer

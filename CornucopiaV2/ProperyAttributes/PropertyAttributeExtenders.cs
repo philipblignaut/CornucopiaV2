@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Reflection;
 
 namespace CornucopiaV2
 {
-   public static class AttributeExtenders
+	public static class AttributeExtenders
    {
       public static List<TAttributeType>
          ClassAttributeList<T, TAttributeType>()

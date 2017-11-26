@@ -143,7 +143,8 @@
     <Compile Include="ThreadExtenders\TypedActionParameterPair.cs" />
     <Compile Include="ThreadExtenders\TypedFuncArgumentPair.cs" />
     <Compile Include="TimeSpanExtenders\TimeSpanExt.cs" />
-    <Compile Include="Transcform\TransformExt.cs" />
+    <Compile Include="Transcform\Transform.cs" />
+    <Compile Include="Vectors\Delegates.cs" />
     <Compile Include="Vectors\DrawingVector.cs" />
     <Compile Include="Vectors\DrawingVectorExt.cs" />
     <Compile Include="Vectors\PosVector.cs" />

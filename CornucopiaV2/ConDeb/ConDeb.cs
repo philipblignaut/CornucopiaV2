@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
@@ -16,7 +12,7 @@ namespace CornucopiaV2
 	{
 		public static event PrintDelegate ConDebPrintDelegate;
 
-		public static void Print
+		public static void          Print                                                                                                
 			(this string line
 			)
 		{

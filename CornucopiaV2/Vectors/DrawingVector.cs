@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CornucopiaV2
 {
 	public struct DrawingVector
 		: IEquatable<DrawingVector>
 	{
-		public PosVector PosVector { get;  set; } // internal
+		public event ReportRotated Rotated;
+		public PosVector PosVector { get; set; } // internal
 		public float LineWidth { get; private set; }
 		public Color Color { get; private set; }
 		/// <summary>Record Constructor</summary>
@@ -26,15 +23,24 @@ namespace CornucopiaV2
 			PosVector = posVector;
 			LineWidth = lineWidth;
 			Color = color;
+			Rotated = null;
+			posVector.Rotated += PosVectorRotated;
+		}
+
+		private void PosVectorRotated(float angleRadians)
+		{
+			if (Rotated != null)
+			{
+				Rotated.Invoke(angleRadians);
+			}
 		}
 
 		public void Draw
 			(CorImage image
-			,bool drawStartEndCircles = false
+			, bool drawStartEndCircles = false
 			)
 		{
-			float lineWidth = LineWidth;
-			lineWidth = lineWidth < 1 ? 1 : lineWidth;
+			float lineWidth = LineWidth < 1 ? 1 : LineWidth;
 			image
 				.DrawLine
 				(Color
@@ -64,33 +70,41 @@ namespace CornucopiaV2
 			}
 		}
 
-		//internal void ChangeStart(PointF start)
-		//{
-		//	float lenght = PosVector.Length;
-		//	float angleRadians = PosVector.AngleRadians;
-		//	PosVector =
-		//		new PosVector
-		//		(start
-		//		, lenght
-		//		, angleRadians
-		//		)
-		//		;
-		//}
-
 		public bool Equals(DrawingVector other)
-		{
-			return
-				PosVector == other.PosVector
+			=> PosVector == other.PosVector
 				&& LineWidth == other.LineWidth
 				&& Color == other.Color
 				;
-		}
+
+		public override bool Equals(object obj)
+			=> (obj is DrawingVector other)
+			? Equals(other)
+			: false
+			;
+
+		public static bool operator ==
+			(DrawingVector left
+			, DrawingVector right
+			) => left.Equals(right)
+			;
+
+		public static bool operator !=
+			(DrawingVector left
+			, DrawingVector right
+			) => !left.Equals(right)
+			;
+
+		public override int GetHashCode()
+			=>
+				PosVector.GetHashCode()
+				& LineWidth.GetHashCode()
+				& Color.GetHashCode()
+				;
 
 		public override string ToString()
-		{
-			return
-				$@"{PosVector} {LineWidth:##.0} {Color}"
+			=>
+				$"{PosVector} {LineWidth.Round(2):##.0} {Color}"
 				;
-		}
+
 	}
 }

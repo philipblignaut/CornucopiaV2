@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CornucopiaV2
+﻿namespace CornucopiaV2
 {
-   public abstract class ACacheDictionaryV2
+	public abstract class ACacheDictionaryV2
    {
       public abstract long CacheHitCount { get; }
       public abstract long CacheMissCount { get; }

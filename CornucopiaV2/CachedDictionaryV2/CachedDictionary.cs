@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace CornucopiaV2
 {
-   public class CachedDictionary<TKey, TValue>
+	public class CachedDictionary<TKey, TValue>
       : ACacheDictionaryV2
    {
       public delegate TValue NewValueFromKey

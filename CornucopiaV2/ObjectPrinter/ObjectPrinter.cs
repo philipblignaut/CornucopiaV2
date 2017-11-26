@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Reflection;
 
 namespace CornucopiaV2
 {
-   public static class ObjectPrinter
+	public static class ObjectPrinter
    {
       public static string PrintObject
         (this object theObject

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 
 namespace CornucopiaV2
 {
@@ -19,21 +18,21 @@ namespace CornucopiaV2
 		//		.SequenceEqual(new[] { 1, number })
 		//		;
 		//}
+		public const int BitsInLong = 64;
+		public const string Digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 		/// <summary>
 		/// Converts the given decimal number to the numeral system with the
-		/// specified radix (in the range [2, 36]).
+		/// specified radix (in the range [2, 36])
 		/// </summary>
-		/// <param name="value">The number to convert.</param>
-		/// <param name="radix">The radix of the destination numeral system (in the range [2, 36]).</param>
+		/// <param name="value">The number to convert</param>
+		/// <param name="radix">The radix of the destination numeral system (in the range [2, 36])</param>
 		/// <returns></returns>
 		public static string ToBase
 			(this long value
 			, int radix
 			)
 		{
-			const int BitsInLong = 64;
-			const string Digits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 			if (radix < 2 || radix > Digits.Length)
 				throw new ArgumentException("The radix must be >= 2 and <= " + Digits.Length.ToString());
@@ -177,11 +176,15 @@ namespace CornucopiaV2
 		}
 
 		public static float ToDegrees
-		   (this float radians
-		   )
-		{
-			return (float)(radians * (180.0 / Math.PI));
-		}
+			(this float radians
+			) => (float)(radians * (180.0 / Math.PI))
+			;
+
+		public static float Round
+			(this float value
+			, int decimals
+			) => (float)Math.Round(value, decimals)
+			;
 
 		public static double Translate
 			(this double value

@@ -14,24 +14,19 @@ namespace CornucopiaV2
 			Min = min;
 			Max = max;
 		}
+
 		public double Distance
-		{
-			get
-			{
-				return Math.Abs(Max - Min);
-			}
-		}
+			=> (Max - Min).Abs();
 
 		public Range Zoom
 		   (double ratio
 		   )
 		{
 			double middle = Min + (Max - Min) / 2.0;
-			double distance = Distance;
-			Min = middle - distance / 2.0 * ratio;
-			Max = middle + distance / 2.0 * ratio;
-			return new Range(Min, Max);
+			double distance = Distance / 2.0 * ratio;
+			return new Range(middle - distance, middle + distance);
 		}
+
 		public Range Move
 		   (double distance
 		   )
@@ -40,9 +35,9 @@ namespace CornucopiaV2
 			Max += distance;
 			return new Range(Min, Max);
 		}
+
 		public override string ToString()
-		{
-			return Min.ToString() + " " + Max.ToString() + " " + Distance.ToString();
-		}
+			=> $"{Min} {Max} {Distance}";
+
 	}
 }

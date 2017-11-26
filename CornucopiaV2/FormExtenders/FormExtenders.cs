@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CornucopiaV2
 {
-   public static class FormExtenders
+	public static class FormExtenders
    {
       public static List<string> ControlTypeList { get; private set; }
       static FormExtenders()

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CornucopiaV2
 {
-   public static class ExceptionExtenders
+	public static class ExceptionExtenders
    {
       /// <summary>
       /// Returns a verbose description of the exception, including

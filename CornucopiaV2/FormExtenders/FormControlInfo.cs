@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using System.Windows;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CornucopiaV2
 {
-   public class FormControlInfo
+	public class FormControlInfo
    {
       public Control Control { get; private set; }
       public object Value { get; private set; }

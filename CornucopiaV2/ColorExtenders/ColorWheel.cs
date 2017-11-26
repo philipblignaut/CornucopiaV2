@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Diagnostics;
 
 namespace CornucopiaV2
 {
-   public static class ColorWheel
+	public static class ColorWheel
    {
       public static Color ColorAtAngleDepth
          (float angle
