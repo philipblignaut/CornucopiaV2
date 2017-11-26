@@ -97,15 +97,8 @@ namespace CornucopiaV2
 								;
 							output += 
 								prettyName 
-								+ " Min {0} Max {1} Tot {2} Avg {3} Cnt {4}"
-									.FormatWith
-									(minTimeSpan
-									, maxTimeSpan
-									, totTimeSpan
-									, avgTimeSpan
-									, prettyInfo.Count
-									)
-									;
+								+ $" Min {minTimeSpan} Max {maxTimeSpan} Tot {totTimeSpan} Avg {avgTimeSpan} Cnt {prettyInfo.Count}"
+								;
 							output += Environment.NewLine;
 						}
 					)

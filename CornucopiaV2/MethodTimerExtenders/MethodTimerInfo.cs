@@ -11,6 +11,7 @@ namespace CornucopiaV2
 			(string prettyName
 			)
 		{
+			Caller = C.es;
 			Stopwatch = new Stopwatch();
 			PrettyName = prettyName;
 		}
